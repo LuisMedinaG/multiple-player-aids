@@ -1,0 +1,294 @@
+@page { size: letter portrait; margin: 0; }
+*, *::before { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --crimson: #7A1525;
+  --navy:    #1B3A6B;
+  --forest:  #1a4029;
+  --gold:    #C8922A;
+  --sand:    #EAD99A;
+  --ink:     #2A1508;
+  --dim:     #7A5A3C;
+  --sail:    #1B5C6B;
+}
+
+html, body {
+  width: 21.59cm;
+  height: 27cm;
+  overflow: hidden;
+}
+
+body {
+  position: relative;
+  font-family: 'Noto Serif', Georgia, serif;
+  color: var(--ink);
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 1cm 0;
+  background-image: url('./assets/background.png');
+  background-size: 21.59cm 27.94cm;
+  background-repeat: no-repeat;
+  background-position: 0 -1cm;
+  z-index: 0;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+/* ── Panel ── */
+.panel {
+  position: absolute;
+  inset: 0.35cm 1.05cm 0.35cm;
+  background: transparent;
+  border: none;
+  border-radius: 0.25cm;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* ── Body ── */
+.panel-body {
+  padding: 0.04cm 0.08cm 0.15cm;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2cm;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ── Section title ── */
+.sec {
+  font-family: 'Cinzel', serif;
+  font-size: 9pt;
+  font-weight: 700;
+  color: var(--crimson);
+  font-variant: small-caps;
+  letter-spacing: 0.07em;
+  border-bottom: 1.5px solid var(--gold);
+  padding-bottom: 0.03cm;
+  margin-bottom: 0.12cm;
+}
+
+/* ── Grids ── */
+.two-col   { display: grid; grid-template-columns: 1fr 1fr;     gap: 0.3cm; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.22cm; }
+
+/* ── Steps (default) ── */
+.steps { display: flex; flex-direction: column; gap: 0.07cm; }
+.step  { display: flex; align-items: flex-start; gap: 0.35em; font-size: 7.5pt; line-height: 1.33; }
+
+/* ── Setup-specific: tighter spacing, slightly smaller font ── */
+.setup-steps        { gap: 0.05cm; }
+.setup-steps .step  { font-size: 7pt; line-height: 1.3; }
+
+.num {
+  background: var(--crimson);
+  color: #FAF0DC;
+  border-radius: 50%;
+  width: 1.45em;
+  height: 1.45em;
+  min-width: 1.45em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 7pt;
+  line-height: 1;
+  flex-shrink: 0;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.sb    { flex: 1; }
+strong { font-weight: 700; }
+.navy   { color: var(--navy); }
+.forest { color: var(--forest); }
+em     { color: var(--dim); font-style: italic; }
+
+.subs { margin: 0.06cm 0 0 1.6em; display: flex; flex-direction: column; gap: 0.05cm; }
+.sub  { display: flex; gap: 0.3em; align-items: flex-start; font-size: 7pt; line-height: 1.3; }
+.sl   {
+  font-family: 'Cinzel', serif; font-weight: 700; color: var(--crimson);
+  font-size: 6.5pt; min-width: 0.85em; flex-shrink: 0;
+}
+
+/* ── Player count table ── */
+.pct { border-collapse: collapse; font-size: 7pt; width: 100%; margin-top: 0.07cm; }
+.pct th {
+  background: var(--crimson); color: #FAF0DC;
+  font-family: 'Cinzel', serif; font-size: 6pt; letter-spacing: 0.03em;
+  padding: 0.04cm 0.12cm; text-align: center;
+  print-color-adjust: exact; -webkit-print-color-adjust: exact;
+}
+.pct td { border: 1px solid var(--gold); padding: 0.04cm 0.12cm; text-align: center; }
+.pct tr:nth-child(even) td { background: rgba(200,146,42,0.1); }
+
+/* ── Your Turn box ── */
+.turn-box {
+  border: 1.5px solid var(--gold);
+  border-radius: 0.18cm;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+.turn-col { padding: 0.12cm 0.3cm; display: flex; flex-direction: column; gap: 0.09cm; }
+.turn-col:first-child { border-right: 1px solid var(--gold); }
+.ti      { display: flex; align-items: flex-start; gap: 0.35em; font-size: 7.5pt; line-height: 1.33; }
+.ti-note { font-size: 7pt; color: var(--dim); font-style: italic; }
+
+/* ── Limit + Anytime combined bar (prominent) ── */
+.limit-bar {
+  border: 2px solid var(--crimson);
+  border-radius: 0.18cm;
+  background: rgba(122, 21, 37, 0.06);
+  padding: 0.09cm 0.35cm;
+  font-family: 'Cinzel', serif;
+  font-size: 7pt;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--crimson);
+  line-height: 1.5;
+  margin-bottom: 0.13cm;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+.anytime-text {
+  font-size: 6.5pt;
+  color: var(--ink);
+  font-family: 'Noto Serif', Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0;
+}
+
+/* ── Action boxes ── */
+.action-box  {
+  border: 1.5px solid var(--gold);
+  border-radius: 0.18cm;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.action-head {
+  font-family: 'Cinzel', serif; font-size: 7.5pt; font-weight: 700;
+  letter-spacing: 0.09em; text-transform: uppercase; color: #FAF0DC;
+  padding: 0.1cm 0.26cm;
+  display: flex; align-items: center; gap: 0.3em;
+  print-color-adjust: exact; -webkit-print-color-adjust: exact;
+}
+.action-head img { height: 1em; width: auto; filter: brightness(0) invert(1); opacity: 0.85; }
+.ah-build   { background: var(--crimson); }
+.ah-sail    { background: var(--sail); }
+.ah-deliver { background: #5C3010; }
+.action-body { padding: 0.13cm 0.26cm 0.14cm; flex: 1; }
+.action-body .step { font-size: 7pt; line-height: 1.32; }
+.action-rule {
+  margin-top: 0.08cm; padding-top: 0.06cm;
+  border-top: 1px dashed rgba(200,146,42,0.55);
+  font-size: 6.5pt; color: var(--crimson); font-style: italic;
+}
+
+/* ── Building types visitor-reward legend (inside BUILD) ── */
+.btype-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.05cm 0.15cm;
+  margin-top: 0.09cm;
+  padding-top: 0.07cm;
+  border-top: 1px dashed rgba(200,146,42,0.55);
+  font-size: 6pt;
+}
+.btype {
+  display: flex;
+  align-items: center;
+  gap: 0.1em;
+  white-space: nowrap;
+  color: var(--dim);
+}
+
+/* ── Action verb highlight ── */
+.vb { color: var(--crimson); font-weight: 700; }
+
+/* ── Completing Your Journey (integrated into SAIL) ── */
+.journey-sub {
+  margin-top: 0.09cm;
+  padding-top: 0.08cm;
+  border-top: 1.5px solid rgba(27, 92, 107, 0.35);
+  font-size: 6.5pt;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.journey-sub-head {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 6.5pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+  margin-bottom: 0.04cm;
+  color: var(--sail);
+}
+.journey-sub-head img { height: 1em; width: auto; }
+
+/* ── Emperor's Visit callout (below action columns) ── */
+.emperor-note {
+  background: rgba(122, 21, 37, 0.06);
+  border: 1.5px solid var(--crimson);
+  border-radius: 0.14cm;
+  padding: 0.07cm 0.3cm;
+  font-size: 7pt;
+  line-height: 1.38;
+  margin-top: 0.12cm;
+  text-align: center;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+.emperor-note strong { color: var(--crimson); }
+
+/* ── VP table ── */
+.vp-label {
+  font-family: 'Cinzel', serif; font-size: 6.5pt; font-weight: 700;
+  color: var(--crimson); text-transform: uppercase;
+  letter-spacing: 0.06em; margin-bottom: 0.05cm;
+}
+.vp-table {
+  display: flex; border: 1.5px solid var(--gold);
+  border-radius: 0.15cm; overflow: hidden; text-align: center;
+}
+.vp-cell  { flex: 1; border-right: 1px solid var(--gold); }
+.vp-cell:last-child { border-right: none; }
+.vp-top {
+  background: var(--sand); font-family: 'Cinzel', serif; font-weight: 700;
+  font-size: 7.5pt; color: var(--crimson); padding: 0.05cm 0;
+  border-bottom: 1px solid var(--gold);
+  print-color-adjust: exact; -webkit-print-color-adjust: exact;
+}
+.vp-bot { font-weight: 700; font-size: 9pt; padding: 0.05cm 0; }
+
+/* ── Clan disc ── */
+.clan-disc {
+  display: inline-block;
+  width: 0.90em; height: 0.90em;
+  background: var(--crimson);
+  border-radius: 50%;
+  vertical-align: middle;
+  margin: 0 0.05em 0.5em;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+/* ── Icons ── */
+.ic    { height: 1.0em; width: auto; vertical-align: middle; margin: 0 0.06em; display: inline; }
+.ic-sm { height: 1em; width: auto; vertical-align: middle; margin: 0 0 0.3em; display: inline; }

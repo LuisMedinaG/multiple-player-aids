@@ -1,368 +1,413 @@
 <!DOCTYPE html>
-
-<html lang="es"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
 <title>El Grande — Ayuda de Jugador</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@page { size: letter portrait; margin: 0; }
+*, *::before { box-sizing: border-box; margin: 0; padding: 0; }
 
-*{box-sizing:border-box;margin:0;padding:0;}
-
-:root{
-  --bg:#faf8f2;
-  --card:#ffffff;
-  --border:#e0d8c8;
-  --red:#9b2226;
-  --gold:#7a5a2a;
-  --dark:#2c2c3a;
-  --green:#2a5a3a;
-  --text:#1a1a1a;
-  --muted:#5a5040;
-  --shadow:0 1px 3px rgba(0,0,0,0.06),0 0 0 0.5px rgba(0,0,0,0.04);
+:root {
+  --crimson: #9b2226;
+  --gold:    #8a6820;
+  --dark:    #2c2c3a;
+  --green:   #2a5a3a;
+  --ink:     #1a1208;
+  --dim:     #6b5040;
+  --bg:      #faf8f2;
+  --border:  #d0c8b0;
 }
 
-body{
-  font-family:'Source Sans 3',sans-serif;
-  background:#6b6255;
-  -webkit-print-color-adjust:exact;
-  print-color-adjust:exact;
+html { background: white; }
+html, body { width: 21.59cm; height: 27.94cm; overflow: hidden; }
+
+body {
+  font-family: 'Noto Serif', Georgia, serif;
+  color: var(--ink);
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 12% 8%,  rgba(155,34,38,0.05)  0%, transparent 50%),
+    radial-gradient(ellipse at 88% 92%, rgba(138,104,32,0.06) 0%, transparent 50%);
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
 }
 
-@page{size:letter portrait;margin:0;}
-
-.page{
-  width:216mm;height:279mm;
-  background:var(--bg);
-  margin:0 auto;
-  padding:4mm 5.5mm 3mm;
-  display:flex;flex-direction:column;
-  gap:4px;
-  overflow:hidden;
+.panel {
+  position: absolute;
+  inset: 0.32cm 0.55cm 0.28cm;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1cm;
+  overflow: hidden;
 }
 
-/* ── HEADER ── */
-.header{
-  display:flex;flex-direction:column;align-items:center;
-  padding:2px 0 3px;border-bottom:2px solid var(--red);
+/* ── Header ── */
+.header {
+  text-align: center;
+  padding-bottom: 0.1cm;
+  border-bottom: 2px solid var(--crimson);
+  flex-shrink: 0;
 }
-.title-main{
-  font-family:'IM Fell English SC',serif;font-size:24px;
-  color:var(--red);line-height:1;letter-spacing:1.5px;
+.title-main {
+  font-family: 'Cinzel', serif;
+  font-size: 20pt; font-weight: 700;
+  color: var(--crimson);
+  letter-spacing: 0.08em; line-height: 1;
 }
-.title-sub{
-  font-family:'IM Fell English',serif;font-style:italic;
-  font-size:9px;color:var(--gold);margin-top:1px;
-}
-
-/* ── CARD ── */
-.card{
-  background:var(--card);border:0.5px solid var(--border);
-  border-radius:4px;box-shadow:var(--shadow);
-  overflow:hidden;display:flex;flex-direction:column;
-}
-.card-head{
-  font-family:'IM Fell English SC',serif;
-  font-size:9px;letter-spacing:.7px;text-transform:uppercase;
-  padding:3.5px 10px;color:#fff;
-}
-.ch-red{background:var(--red);}
-.ch-gold{background:var(--gold);}
-.ch-dark{background:var(--dark);}
-.ch-green{background:var(--green);}
-.card-body{padding:5px 8px;display:flex;flex-direction:column;gap:3px;flex:1;}
-
-/* ── TEXT ── */
-.r{font-size:10px;line-height:1.38;color:var(--text);}
-.r b{font-weight:700;}
-.r i{font-style:italic;color:var(--gold);}
-.n{font-size:9px;color:var(--muted);line-height:1.3;font-style:italic;}
-.dv{height:0.5px;background:var(--border);margin:2px 0;}
-
-/* ── PILLS ── */
-.p{
-  display:inline-flex;align-items:center;gap:1.5px;
-  padding:0 3px;border-radius:3px;font-weight:700;
-  white-space:nowrap;vertical-align:baseline;font-size:inherit;
-}
-.p svg{flex-shrink:0;position:relative;top:-0.3px;}
-.p-king{background:rgba(155,34,38,0.12);color:var(--red);}
-.p-cas{background:rgba(44,44,58,0.1);color:var(--dark);}
-.p-crt{background:rgba(42,90,58,0.1);color:var(--green);font-weight:600;}
-.p-prv{background:rgba(122,90,42,0.1);color:#5a4020;font-weight:600;}
-.p-pts{background:rgba(201,168,76,0.2);color:#3d3008;font-weight:600;}
-
-.ic{display:inline-block;vertical-align:middle;position:relative;top:-0.5px;}
-
-/* ── STEPS ── */
-.steps{display:flex;flex-direction:column;gap:3px;}
-.st{display:flex;gap:4px;align-items:flex-start;}
-.sn{
-  width:14px;height:14px;flex-shrink:0;color:#fff;
-  font-family:'IM Fell English SC',serif;font-size:8.5px;font-weight:700;
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  margin-top:1px;
-}
-.sn-r{background:var(--red);}
-.sn-g{background:var(--gold);}
-.sn-d{background:var(--dark);}
-.sb{flex:1;font-size:10px;line-height:1.38;color:var(--text);}
-.sb b{font-weight:700;}
-
-/* ── LISTS ── */
-.sl{list-style:none;display:flex;flex-direction:column;gap:3px;}
-.sl li{font-size:9.5px;line-height:1.35;color:var(--text);padding-left:9px;position:relative;}
-.sl li::before{content:'◆';position:absolute;left:0;color:var(--red);font-size:5px;top:3px;}
-.sl li b{font-weight:700;}
-
-.bl{list-style:none;display:flex;flex-direction:column;gap:3px;}
-.bl li{font-size:9.5px;line-height:1.35;color:var(--text);padding-left:8px;position:relative;}
-.bl li::before{content:'–';position:absolute;left:0;color:var(--gold);font-weight:700;font-size:11px;top:-2px;}
-.bl li b{font-weight:700;}
-
-/* ── 2-COL BODY ── */
-.body{display:grid;grid-template-columns:1fr 1fr;gap:6px;flex:1;}
-.col{display:flex;flex-direction:column;gap:5px;}
-
-/* ── TABOO ── */
-.taboo{
-  background:var(--red);color:#fff;border-radius:4px;
-  padding:7px 14px;display:flex;align-items:center;gap:8px;
-  font-size:10px;font-weight:600;line-height:1.35;
-}
-.taboo svg{flex-shrink:0;}
-.taboo b{font-weight:700;}
-.taboo i{font-style:italic;font-weight:400;opacity:0.9;}
-
-/* ── POWER STRIP ── */
-.power-strip{
-  background:var(--card);border:0.5px solid var(--border);
-  border-radius:4px;box-shadow:var(--shadow);
-  padding:4px 10px;display:flex;align-items:center;gap:8px;
-}
-.power-label{
-  font-family:'IM Fell English SC',serif;font-size:8.5px;
-  color:var(--red);letter-spacing:.5px;white-space:nowrap;text-transform:uppercase;
-}
-.power-grid{
-  display:grid;grid-template-columns:repeat(13,1fr);gap:0;flex:1;
-  font-size:9px;text-align:center;border:0.5px solid var(--border);
-  border-radius:3px;overflow:hidden;
-}
-.pg-h{
-  background:var(--red);color:#fff;
-  font-family:'IM Fell English SC',serif;font-weight:700;font-size:8.5px;
-  padding:2px 0;border-right:0.5px solid rgba(255,255,255,0.2);
-}
-.pg-v{
-  padding:2px 0;border-right:0.5px solid var(--border);
-  font-weight:700;color:var(--text);background:rgba(250,248,242,0.5);
-}
-.pg-h:last-child,.pg-v:last-child{border-right:none;}
-.power-note{font-size:8px;color:var(--muted);font-style:italic;white-space:nowrap;}
-
-/* ── FOOTER ── */
-.footer{
-  text-align:center;font-size:6px;color:var(--muted);
-  font-style:italic;padding-top:0.5px;
+.title-sub {
+  font-size: 7pt; color: var(--dim);
+  font-style: italic; margin-top: 0.03cm;
 }
 
-.hl{background:rgba(155,34,38,0.1);padding:0 3px;border-radius:2px;color:var(--red);}
-
-/* ── PRINT ── */
-.print-btn{
-  display:block;margin:10px auto;padding:8px 24px;
-  font-family:'Source Sans 3',sans-serif;font-size:13px;
-  background:var(--bg);color:var(--red);border:1px solid var(--red);
-  border-radius:4px;cursor:pointer;
+/* ── Body grid ── */
+.body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.28cm;
+  flex: 1;
+  overflow: hidden;
 }
-.print-btn:hover{background:#f0ece2;}
-@media print{.print-btn{display:none;}}
+.col { display: flex; flex-direction: column; gap: 0.11cm; overflow: hidden; }
+
+/* ── Section title ── */
+.sec {
+  font-family: 'Cinzel', serif;
+  font-size: 7.5pt; font-weight: 700;
+  color: var(--crimson);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border-bottom: 1.5px solid var(--gold);
+  padding-bottom: 0.03cm; margin-bottom: 0.07cm;
+}
+
+/* ── Steps ── */
+.steps { display: flex; flex-direction: column; gap: 0.05cm; }
+.step  { display: flex; align-items: flex-start; gap: 0.3em; font-size: 7pt; line-height: 1.33; }
+.num {
+  background: var(--crimson); color: #faf0dc;
+  border-radius: 50%;
+  width: 1.5em; height: 1.5em; min-width: 1.5em;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cinzel', serif; font-weight: 700; font-size: 6pt;
+  line-height: 1; flex-shrink: 0;
+  print-color-adjust: exact; -webkit-print-color-adjust: exact;
+}
+.num-g { background: var(--green); }
+.num-d { background: var(--dark); }
+.num-o { background: var(--gold); }
+.sb { flex: 1; }
+strong { font-weight: 700; }
+em { color: var(--dim); font-style: italic; }
+.vb { color: var(--crimson); font-weight: 700; }
+
+/* ── Sub-steps ── */
+.subs { margin: 0.04cm 0 0 1.55em; display: flex; flex-direction: column; gap: 0.04cm; }
+.sub  { display: flex; gap: 0.3em; align-items: flex-start; font-size: 6.5pt; line-height: 1.32; }
+.sl   {
+  font-family: 'Cinzel', serif; font-weight: 700; color: var(--crimson);
+  font-size: 6pt; min-width: 0.85em; flex-shrink: 0;
+}
+
+/* ── Rule note ── */
+.rule-note {
+  margin-top: 0.05cm; padding-top: 0.04cm;
+  border-top: 1px dashed rgba(138,104,32,0.5);
+  font-size: 6.5pt; color: var(--crimson); font-style: italic; line-height: 1.35;
+}
+
+.dv { height: 0.5px; background: var(--border); margin: 0.04cm 0; }
+
+/* ── Box sections ── */
+.box { border: 1.5px solid var(--gold); border-radius: 0.15cm; overflow: hidden; flex-shrink: 0; }
+.box-head {
+  font-family: 'Cinzel', serif;
+  font-size: 7pt; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: #faf0dc;
+  padding: 0.07cm 0.22cm;
+  display: flex; align-items: center; gap: 0.28em;
+  print-color-adjust: exact; -webkit-print-color-adjust: exact;
+}
+.bh-dark { background: var(--dark); }
+.bh-gold { background: var(--gold); }
+.box-body { padding: 0.09cm 0.18cm; display: flex; flex-direction: column; gap: 0.05cm; }
+
+/* ── Warning callout ── */
+.warn {
+  border: 1.5px solid var(--crimson);
+  border-radius: 0.14cm;
+  background: rgba(155,34,38,0.05);
+  padding: 0.08cm 0.2cm;
+  font-size: 7pt; line-height: 1.33;
+  display: flex; align-items: flex-start; gap: 0.3em;
+  flex-shrink: 0;
+  print-color-adjust: exact; -webkit-print-color-adjust: exact;
+}
+
+/* ── "Fácil de olvidar" ── */
+.forget-box {
+  border: 1.5px dashed var(--gold);
+  border-radius: 0.15cm;
+  padding: 0.08cm 0.18cm;
+  flex-shrink: 0;
+}
+.forget-head {
+  font-family: 'Cinzel', serif;
+  font-size: 6.5pt; font-weight: 700; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  margin-bottom: 0.05cm;
+}
+
+/* ── Bullet list ── */
+.bl { list-style: none; display: flex; flex-direction: column; gap: 0.04cm; }
+.bl li { font-size: 7pt; line-height: 1.33; padding-left: 0.55em; position: relative; }
+.bl li::before { content: '›'; position: absolute; left: 0; color: var(--gold); font-size: 8pt; line-height: 1.1; }
+
+/* ── Pill labels ── */
+.p {
+  display: inline-flex; align-items: center; gap: 0.12em;
+  padding: 0 0.18em; border-radius: 0.1em;
+  font-weight: 700; white-space: nowrap; font-size: 0.95em;
+}
+.p-king { background: rgba(155,34,38,0.1);  color: var(--crimson); }
+.p-cas  { background: rgba(44,44,58,0.1);   color: var(--dark); }
+.p-crt  { background: rgba(42,90,58,0.1);   color: var(--green); }
+.p-prv  { background: rgba(90,64,32,0.1);   color: var(--dim); }
+.p-pts  { background: rgba(138,104,32,0.12); color: var(--gold); }
+
+/* ── Inline icon ── */
+.ic { height: 1em; width: auto; vertical-align: middle; margin: 0 0.04em; display: inline; }
+
+/* ── Power card strip ── */
+.power-strip {
+  display: flex; align-items: center; gap: 0.22cm;
+  border: 1.5px solid var(--gold); border-radius: 0.14cm;
+  background: rgba(138,104,32,0.06);
+  padding: 0.07cm 0.22cm;
+  flex-shrink: 0;
+  print-color-adjust: exact; -webkit-print-color-adjust: exact;
+}
+.power-label {
+  font-family: 'Cinzel', serif;
+  font-size: 6pt; font-weight: 700; color: var(--crimson);
+  text-transform: uppercase; letter-spacing: 0.04em;
+  line-height: 1.4; white-space: nowrap;
+}
+.power-grid {
+  display: grid; grid-template-columns: repeat(13, 1fr);
+  flex: 1; text-align: center;
+}
+.pg-h {
+  font-family: 'Cinzel', serif; font-size: 6pt; font-weight: 700;
+  color: var(--crimson); border-bottom: 1px solid var(--gold); padding-bottom: 0.02cm;
+}
+.pg-v { font-size: 7pt; font-weight: 700; color: var(--ink); padding-top: 0.02cm; }
+.power-note {
+  font-size: 6pt; color: var(--dim); font-style: italic;
+  line-height: 1.45; text-align: right; white-space: nowrap;
+}
+
+.print-btn {
+  display: block; margin: 10px auto; padding: 8px 24px;
+  font-family: 'Noto Serif', serif; font-size: 13px;
+  background: var(--bg); color: var(--ink);
+  border: 1px solid var(--gold); border-radius: 4px; cursor: pointer;
+}
+@media print { .print-btn { display: none; } }
 </style>
 </head>
 <body>
 
-<!-- ── ICON SPRITES ── -->
 <svg aria-hidden="true" style="display:none" xmlns="http://www.w3.org/2000/svg">
-<symbol id="ic-castle" viewBox="0 0 16 16"><rect fill="#2c2c3a" height="8" rx="1" width="10" x="3" y="6"></rect><rect fill="#2c2c3a" height="5" width="2" x="5" y="2"></rect><rect fill="#2c2c3a" height="5" width="2" x="9" y="2"></rect><rect fill="#faf8f2" height="5" width="3" x="6.5" y="9"></rect></symbol>
-<symbol id="ic-candle" viewBox="0 0 16 16"><path d="M8 1C8 1 6 3 6 5C6 7 8 8 8 8C8 8 10 7 10 5C10 3 8 1 8 1Z" fill="#6b3a10"></path><rect fill="#6b3a10" height="4" width="2" x="7" y="8"></rect><rect fill="#6b3a10" height="1.5" rx="0.5" width="6" x="5" y="12"></rect></symbol>
-<symbol id="ic-flame" viewBox="0 0 16 16"><path d="M8 2C6.5 4 5 6 5 8C5 10.5 6.3 12 8 12C9.7 12 11 10.5 11 8C11 6 9.5 4 8 2Z" fill="#c4500a"></path><path d="M8 5C7.2 6.5 6.5 7.5 6.5 9C6.5 10.3 7.2 11 8 11C8.8 11 9.5 10.3 9.5 9C9.5 7.5 8.8 6.5 8 5Z" fill="#e8a020"></path></symbol>
-<symbol id="ic-king" viewBox="0 0 16 16"><path d="M2 12L4 6L8 9L12 6L14 12Z" fill="#9b2226"></path><circle cx="8" cy="4" fill="#9b2226" r="1.5"></circle><circle cx="4" cy="5" fill="#9b2226" r="1"></circle><circle cx="12" cy="5" fill="#9b2226" r="1"></circle></symbol>
-<symbol id="ic-grande-brown" viewBox="0 0 198 198"><g fill="#6b3a10" transform="translate(24,153.5)"><path d="M 50.40625 0 C 50.40625 -4.894531 51.003906 -9.394531 52.203125 -13.5 C 53.398438 -17.601563 54.75 -20.703125 56.25 -22.796875 C 57.050781 -23.898438 58.273438 -25.375 59.921875 -27.21875 C 61.578125 -29.070313 63.753906 -31.347656 66.453125 -34.046875 C 69.648438 -37.242188 71.921875 -39.867188 73.265625 -41.921875 C 74.617188 -43.972656 75.296875 -46.050781 75.296875 -48.15625 C 75.296875 -49.15625 75.195313 -50.050781 75 -50.84375 L 74.40625 -50.84375 C 74.300781 -50.050781 73.570313 -48.90625 72.21875 -47.40625 C 70.875 -45.90625 69.203125 -44.851563 67.203125 -44.25 C 66.203125 -43.945313 64.875 -43.671875 63.21875 -43.421875 C 61.570313 -43.171875 59.597656 -42.945313 57.296875 -42.75 C 56.097656 -41.945313 54.820313 -40.84375 53.46875 -39.4375 C 52.125 -38.039063 50.703125 -36.34375 49.203125 -34.34375 C 46.203125 -30.445313 43.5 -28.5 41.09375 -28.5 C 38.5 -28.5 36.375 -28.796875 34.71875 -29.390625 C 33.070313 -29.992188 31.75 -31.097656 30.75 -32.703125 L 24 -43.34375 C 24.695313 -44.644531 25.421875 -46.296875 26.171875 -48.296875 C 26.921875 -50.296875 27.75 -52.546875 28.65625 -55.046875 C 29.550781 -57.648438 30.472656 -59.875 31.421875 -61.71875 C 32.367188 -63.570313 33.242188 -65 34.046875 -66 C 35.742188 -68.195313 37.195313 -71.445313 38.40625 -75.75 C 39.195313 -78.644531 39.96875 -81.019531 40.71875 -82.875 C 41.46875 -84.726563 42.539063 -86.351563 43.9375 -87.75 C 45.34375 -89.144531 47.445313 -90.59375 50.25 -92.09375 C 51.144531 -95 51.59375 -98.050781 51.59375 -101.25 C 51.59375 -102.851563 51.492188 -104.425781 51.296875 -105.96875 C 51.097656 -107.519531 50.800781 -109.097656 50.40625 -110.703125 L 54 -110.703125 C 59.300781 -108.703125 62.5 -105.203125 63.59375 -100.203125 L 64.5 -100.203125 C 64.894531 -101.097656 65.191406 -102.59375 65.390625 -104.6875 C 65.597656 -106.789063 65.703125 -108.546875 65.703125 -109.953125 C 65.703125 -110.847656 65.675781 -111.742188 65.625 -112.640625 C 65.570313 -113.546875 65.5 -114.347656 65.40625 -115.046875 L 70.65625 -115.046875 C 73.65625 -113.453125 76.050781 -111.003906 77.84375 -107.703125 C 79.644531 -104.398438 80.546875 -100.847656 80.546875 -97.046875 C 86.742188 -95.347656 92.617188 -92.195313 98.171875 -87.59375 C 103.722656 -83 108.570313 -77.148438 112.71875 -70.046875 C 116.875 -62.953125 119.898438 -54.800781 121.796875 -45.59375 C 123.203125 -38.695313 124.253906 -31.570313 124.953125 -24.21875 C 125.648438 -16.875 126 -9.25 126 -1.34375 L 126 0 Z M 105.90625 -10.046875 L 115.796875 -10.046875 C 115.796875 -17.847656 115.367188 -25.445313 114.515625 -32.84375 C 113.671875 -40.25 112.347656 -47.050781 110.546875 -53.25 C 108.742188 -59.445313 106.34375 -64.644531 103.34375 -68.84375 C 101.144531 -72.050781 98.894531 -74.851563 96.59375 -77.25 C 94.300781 -79.644531 91.953125 -81.59375 89.546875 -83.09375 L 88.203125 -82.203125 C 92.398438 -78.703125 95.875 -74.828125 98.625 -70.578125 C 101.375 -66.328125 103.445313 -61 104.84375 -54.59375 C 106.25 -48.195313 106.953125 -39.898438 106.953125 -29.703125 C 106.953125 -26.003906 106.875 -22.503906 106.71875 -19.203125 C 106.570313 -15.898438 106.300781 -12.847656 105.90625 -10.046875 Z M 53.703125 -74.09375 C 55.003906 -74.09375 56.253906 -74.59375 57.453125 -75.59375 C 58.648438 -76.59375 59.898438 -77.09375 61.203125 -77.09375 L 62.40625 -76.953125 L 62.40625 -78.296875 L 58.203125 -79.5 C 57.597656 -79.695313 56.96875 -79.84375 56.3125 -79.9375 C 55.664063 -80.039063 55.046875 -80.09375 54.453125 -80.09375 C 52.847656 -80.09375 51.519531 -79.789063 50.46875 -79.1875 C 49.425781 -78.59375 48.90625 -77.75 48.90625 -76.65625 L 48.90625 -75.59375 L 49.046875 -75 C 49.847656 -74.394531 51.398438 -74.09375 53.703125 -74.09375 Z M 38.703125 -41.84375 C 39.003906 -43.25 39.703125 -44.875 40.796875 -46.71875 C 41.898438 -48.570313 43.453125 -50.195313 45.453125 -51.59375 L 44.84375 -52.34375 C 42.050781 -52.25 39.78125 -51.523438 38.03125 -50.171875 C 36.28125 -48.828125 35.15625 -47.15625 34.65625 -45.15625 C 35.050781 -44.351563 35.671875 -43.625 36.515625 -42.96875 C 37.367188 -42.320313 38.097656 -41.945313 38.703125 -41.84375 Z M 38.703125 -41.84375"></path></g></symbol>
-<symbol id="ic-knight-brown" viewBox="0 0 512 512"><path d="M256 54.99c-27 0-46.418 14.287-57.633 32.23-10.03 16.047-14.203 34.66-15.017 50.962-30.608 15.135-64.515 30.394-91.815 45.994-14.32 8.183-26.805 16.414-36.203 25.26C45.934 218.28 39 228.24 39 239.99c0 5 2.44 9.075 5.19 12.065 2.754 2.99 6.054 5.312 9.812 7.48 7.515 4.336 16.99 7.95 27.412 11.076 15.483 4.646 32.823 8.1 47.9 9.577-14.996 25.84-34.953 49.574-52.447 72.315C56.65 378.785 39 403.99 39 431.99c0 4-.044 7.123.31 10.26.355 3.137 1.256 7.053 4.41 10.156 3.155 3.104 7.017 3.938 10.163 4.28 3.146.345 6.315.304 10.38.304h111.542c8.097 0 14.026.492 20.125-3.43 6.1-3.92 8.324-9.275 12.67-17.275l.088-.16.08-.166s9.723-19.77 21.324-39.388c5.8-9.808 12.097-19.576 17.574-26.498 2.74-3.46 5.304-6.204 7.15-7.754.564-.472.82-.56 1.184-.76.363.2.62.288 1.184.76 1.846 1.55 4.41 4.294 7.15 7.754 5.477 6.922 11.774 16.69 17.574 26.498 11.6 19.618 21.324 39.387 21.324 39.387l.08.165.088.16c4.346 8 6.55 13.323 12.61 17.254 6.058 3.93 11.974 3.45 19.957 3.45H448c4 0 7.12.043 10.244-.304 3.123-.347 6.998-1.21 10.12-4.332 3.12-3.122 3.984-6.997 4.33-10.12.348-3.122.306-6.244.306-10.244 0-28-17.65-53.205-37.867-79.488-17.493-22.74-37.45-46.474-52.447-72.315 15.077-1.478 32.417-4.93 47.9-9.576 10.422-3.125 19.897-6.74 27.412-11.075 3.758-2.168 7.058-4.49 9.81-7.48 2.753-2.99 5.192-7.065 5.192-12.065 0-11.75-6.934-21.71-16.332-30.554-9.398-8.846-21.883-17.077-36.203-25.26-27.3-15.6-61.207-30.86-91.815-45.994-.814-16.3-4.988-34.915-15.017-50.96C302.418 69.276 283 54.99 256 54.99z" fill="#6b3a10"></path></symbol>
-<symbol id="ic-court" viewBox="0 0 14 16"><rect fill="none" height="9" rx="2" stroke="#2a5a3a" stroke-width="1.5" width="12" x="1" y="5"></rect><path d="M4 5V3a3 3 0 0 1 6 0v2" fill="none" stroke="#2a5a3a" stroke-width="1.5"></path></symbol>
-<symbol id="ic-province" viewBox="0 0 16 16"><circle cx="4" cy="10" fill="#5a4020" r="2"></circle><circle cx="8" cy="8" fill="#5a4020" r="2"></circle><circle cx="12" cy="10" fill="#5a4020" r="2"></circle><circle cx="6" cy="12" fill="#5a4020" r="2"></circle><circle cx="10" cy="12" fill="#5a4020" r="2"></circle></symbol>
-<symbol id="ic-knight-gold" viewBox="0 0 512 512"><path d="M256 54.99c-27 0-46.418 14.287-57.633 32.23-10.03 16.047-14.203 34.66-15.017 50.962-30.608 15.135-64.515 30.394-91.815 45.994-14.32 8.183-26.805 16.414-36.203 25.26C45.934 218.28 39 228.24 39 239.99c0 5 2.44 9.075 5.19 12.065 2.754 2.99 6.054 5.312 9.812 7.48 7.515 4.336 16.99 7.95 27.412 11.076 15.483 4.646 32.823 8.1 47.9 9.577-14.996 25.84-34.953 49.574-52.447 72.315C56.65 378.785 39 403.99 39 431.99c0 4-.044 7.123.31 10.26.355 3.137 1.256 7.053 4.41 10.156 3.155 3.104 7.017 3.938 10.163 4.28 3.146.345 6.315.304 10.38.304h111.542c8.097 0 14.026.492 20.125-3.43 6.1-3.92 8.324-9.275 12.67-17.275l.088-.16.08-.166s9.723-19.77 21.324-39.388c5.8-9.808 12.097-19.576 17.574-26.498 2.74-3.46 5.304-6.204 7.15-7.754.564-.472.82-.56 1.184-.76.363.2.62.288 1.184.76 1.846 1.55 4.41 4.294 7.15 7.754 5.477 6.922 11.774 16.69 17.574 26.498 11.6 19.618 21.324 39.387 21.324 39.387l.08.165.088.16c4.346 8 6.55 13.323 12.61 17.254 6.058 3.93 11.974 3.45 19.957 3.45H448c4 0 7.12.043 10.244-.304 3.123-.347 6.998-1.21 10.12-4.332 3.12-3.122 3.984-6.997 4.33-10.12.348-3.122.306-6.244.306-10.244 0-28-17.65-53.205-37.867-79.488-17.493-22.74-37.45-46.474-52.447-72.315 15.077-1.478 32.417-4.93 47.9-9.576 10.422-3.125 19.897-6.74 27.412-11.075 3.758-2.168 7.058-4.49 9.81-7.48 2.753-2.99 5.192-7.065 5.192-12.065 0-11.75-6.934-21.71-16.332-30.554-9.398-8.846-21.883-17.077-36.203-25.26-27.3-15.6-61.207-30.86-91.815-45.994-.814-16.3-4.988-34.915-15.017-50.96C302.418 69.276 283 54.99 256 54.99z" fill="#7a5a2a"></path></symbol>
-<symbol id="ic-prohibit" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" stroke="#fff" stroke-width="1.5"></circle><path d="M4.5 4.5L11.5 11.5M11.5 4.5L4.5 11.5" stroke="#fff" stroke-linecap="round" stroke-width="1.5"></path></symbol>
-<symbol id="ic-king-white" viewBox="0 0 16 16"><path d="M2 12L4 6L8 9L12 6L14 12Z" fill="#fff"></path><circle cx="8" cy="4" fill="#fff" r="1.5"></circle><circle cx="4" cy="5" fill="#fff" r="1"></circle><circle cx="12" cy="5" fill="#fff" r="1"></circle></symbol>
-<symbol id="ic-star" viewBox="0 0 16 16"><polygon fill="#5a4a10" points="8,1 10,6 16,6 11,10 13,16 8,12 3,16 5,10 0,6 6,6"></polygon></symbol>
-<symbol id="ic-grande-dark" viewBox="0 0 198 198"><g fill="#1a1a1a" transform="translate(24,153.5)"><path d="M 50.40625 0 C 50.40625 -4.894531 51.003906 -9.394531 52.203125 -13.5 C 53.398438 -17.601563 54.75 -20.703125 56.25 -22.796875 C 57.050781 -23.898438 58.273438 -25.375 59.921875 -27.21875 C 61.578125 -29.070313 63.753906 -31.347656 66.453125 -34.046875 C 69.648438 -37.242188 71.921875 -39.867188 73.265625 -41.921875 C 74.617188 -43.972656 75.296875 -46.050781 75.296875 -48.15625 C 75.296875 -49.15625 75.195313 -50.050781 75 -50.84375 L 74.40625 -50.84375 C 74.300781 -50.050781 73.570313 -48.90625 72.21875 -47.40625 C 70.875 -45.90625 69.203125 -44.851563 67.203125 -44.25 C 66.203125 -43.945313 64.875 -43.671875 63.21875 -43.421875 C 61.570313 -43.171875 59.597656 -42.945313 57.296875 -42.75 C 56.097656 -41.945313 54.820313 -40.84375 53.46875 -39.4375 C 52.125 -38.039063 50.703125 -36.34375 49.203125 -34.34375 C 46.203125 -30.445313 43.5 -28.5 41.09375 -28.5 C 38.5 -28.5 36.375 -28.796875 34.71875 -29.390625 C 33.070313 -29.992188 31.75 -31.097656 30.75 -32.703125 L 24 -43.34375 C 24.695313 -44.644531 25.421875 -46.296875 26.171875 -48.296875 C 26.921875 -50.296875 27.75 -52.546875 28.65625 -55.046875 C 29.550781 -57.648438 30.472656 -59.875 31.421875 -61.71875 C 32.367188 -63.570313 33.242188 -65 34.046875 -66 C 35.742188 -68.195313 37.195313 -71.445313 38.40625 -75.75 C 39.195313 -78.644531 39.96875 -81.019531 40.71875 -82.875 C 41.46875 -84.726563 42.539063 -86.351563 43.9375 -87.75 C 45.34375 -89.144531 47.445313 -90.59375 50.25 -92.09375 C 51.144531 -95 51.59375 -98.050781 51.59375 -101.25 C 51.59375 -102.851563 51.492188 -104.425781 51.296875 -105.96875 C 51.097656 -107.519531 50.800781 -109.097656 50.40625 -110.703125 L 54 -110.703125 C 59.300781 -108.703125 62.5 -105.203125 63.59375 -100.203125 L 64.5 -100.203125 C 64.894531 -101.097656 65.191406 -102.59375 65.390625 -104.6875 C 65.597656 -106.789063 65.703125 -108.546875 65.703125 -109.953125 C 65.703125 -110.847656 65.675781 -111.742188 65.625 -112.640625 C 65.570313 -113.546875 65.5 -114.347656 65.40625 -115.046875 L 70.65625 -115.046875 C 73.65625 -113.453125 76.050781 -111.003906 77.84375 -107.703125 C 79.644531 -104.398438 80.546875 -100.847656 80.546875 -97.046875 C 86.742188 -95.347656 92.617188 -92.195313 98.171875 -87.59375 C 103.722656 -83 108.570313 -77.148438 112.71875 -70.046875 C 116.875 -62.953125 119.898438 -54.800781 121.796875 -45.59375 C 123.203125 -38.695313 124.253906 -31.570313 124.953125 -24.21875 C 125.648438 -16.875 126 -9.25 126 -1.34375 L 126 0 Z M 105.90625 -10.046875 L 115.796875 -10.046875 C 115.796875 -17.847656 115.367188 -25.445313 114.515625 -32.84375 C 113.671875 -40.25 112.347656 -47.050781 110.546875 -53.25 C 108.742188 -59.445313 106.34375 -64.644531 103.34375 -68.84375 C 101.144531 -72.050781 98.894531 -74.851563 96.59375 -77.25 C 94.300781 -79.644531 91.953125 -81.59375 89.546875 -83.09375 L 88.203125 -82.203125 C 92.398438 -78.703125 95.875 -74.828125 98.625 -70.578125 C 101.375 -66.328125 103.445313 -61 104.84375 -54.59375 C 106.25 -48.195313 106.953125 -39.898438 106.953125 -29.703125 C 106.953125 -26.003906 106.875 -22.503906 106.71875 -19.203125 C 106.570313 -15.898438 106.300781 -12.847656 105.90625 -10.046875 Z M 53.703125 -74.09375 C 55.003906 -74.09375 56.253906 -74.59375 57.453125 -75.59375 C 58.648438 -76.59375 59.898438 -77.09375 61.203125 -77.09375 L 62.40625 -76.953125 L 62.40625 -78.296875 L 58.203125 -79.5 C 57.597656 -79.695313 56.96875 -79.84375 56.3125 -79.9375 C 55.664063 -80.039063 55.046875 -80.09375 54.453125 -80.09375 C 52.847656 -80.09375 51.519531 -79.789063 50.46875 -79.1875 C 49.425781 -78.59375 48.90625 -77.75 48.90625 -76.65625 L 48.90625 -75.59375 L 49.046875 -75 C 49.847656 -74.394531 51.398438 -74.09375 53.703125 -74.09375 Z M 38.703125 -41.84375 C 39.003906 -43.25 39.703125 -44.875 40.796875 -46.71875 C 41.898438 -48.570313 43.453125 -50.195313 45.453125 -51.59375 L 44.84375 -52.34375 C 42.050781 -52.25 39.78125 -51.523438 38.03125 -50.171875 C 36.28125 -48.828125 35.15625 -47.15625 34.65625 -45.15625 C 35.050781 -44.351563 35.671875 -43.625 36.515625 -42.96875 C 37.367188 -42.320313 38.097656 -41.945313 38.703125 -41.84375 Z M 38.703125 -41.84375"></path></g></symbol>
+  <symbol id="ic-castle" viewBox="0 0 16 16">
+    <rect fill="#2c2c3a" height="8" rx="1" width="10" x="3" y="6"/>
+    <rect fill="#2c2c3a" height="5" width="2" x="5" y="2"/>
+    <rect fill="#2c2c3a" height="5" width="2" x="9" y="2"/>
+    <rect fill="#faf8f2" height="5" width="3" x="6.5" y="9"/>
+  </symbol>
+  <symbol id="ic-king" viewBox="0 0 16 16">
+    <path d="M2 12L4 6L8 9L12 6L14 12Z" fill="#9b2226"/>
+    <circle cx="8" cy="4" fill="#9b2226" r="1.5"/>
+    <circle cx="4" cy="5" fill="#9b2226" r="1"/>
+    <circle cx="12" cy="5" fill="#9b2226" r="1"/>
+  </symbol>
+  <symbol id="ic-court" viewBox="0 0 14 16">
+    <rect fill="none" height="9" rx="2" stroke="#2a5a3a" stroke-width="1.5" width="12" x="1" y="5"/>
+    <path d="M4 5V3a3 3 0 0 1 6 0v2" fill="none" stroke="#2a5a3a" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="ic-province" viewBox="0 0 16 16">
+    <circle cx="4" cy="10" fill="#5a4020" r="2"/>
+    <circle cx="8" cy="8"  fill="#5a4020" r="2"/>
+    <circle cx="12" cy="10" fill="#5a4020" r="2"/>
+    <circle cx="6" cy="12" fill="#5a4020" r="2"/>
+    <circle cx="10" cy="12" fill="#5a4020" r="2"/>
+  </symbol>
+  <symbol id="ic-knight" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M256 54.99c-27 0-46.418 14.287-57.633 32.23-10.03 16.047-14.203 34.66-15.017 50.962-30.608 15.135-64.515 30.394-91.815 45.994-14.32 8.183-26.805 16.414-36.203 25.26C45.934 218.28 39 228.24 39 239.99c0 5 2.44 9.075 5.19 12.065 2.754 2.99 6.054 5.312 9.812 7.48 7.515 4.336 16.99 7.95 27.412 11.076 15.483 4.646 32.823 8.1 47.9 9.577-14.996 25.84-34.953 49.574-52.447 72.315C56.65 378.785 39 403.99 39 431.99c0 4-.044 7.123.31 10.26.355 3.137 1.256 7.053 4.41 10.156 3.155 3.104 7.017 3.938 10.163 4.28 3.146.345 6.315.304 10.38.304h111.542c8.097 0 14.026.492 20.125-3.43 6.1-3.92 8.324-9.275 12.67-17.275l.088-.16.08-.166s9.723-19.77 21.324-39.388c5.8-9.808 12.097-19.576 17.574-26.498 2.74-3.46 5.304-6.204 7.15-7.754.564-.472.82-.56 1.184-.76.363.2.62.288 1.184.76 1.846 1.55 4.41 4.294 7.15 7.754 5.477 6.922 11.774 16.69 17.574 26.498 11.6 19.618 21.324 39.387 21.324 39.387l.08.165.088.16c4.346 8 6.55 13.323 12.61 17.254 6.058 3.93 11.974 3.45 19.957 3.45H448c4 0 7.12.043 10.244-.304 3.123-.347 6.998-1.21 10.12-4.332 3.12-3.122 3.984-6.997 4.33-10.12.348-3.122.306-6.244.306-10.244 0-28-17.65-53.205-37.867-79.488-17.493-22.74-37.45-46.474-52.447-72.315 15.077-1.478 32.417-4.93 47.9-9.576 10.422-3.125 19.897-6.74 27.412-11.075 3.758-2.168 7.058-4.49 9.81-7.48 2.753-2.99 5.192-7.065 5.192-12.065 0-11.75-6.934-21.71-16.332-30.554-9.398-8.846-21.883-17.077-36.203-25.26-27.3-15.6-61.207-30.86-91.815-45.994-.814-16.3-4.988-34.915-15.017-50.96C302.418 69.276 283 54.99 256 54.99z"/>
+  </symbol>
+  <symbol id="ic-grande" viewBox="0 0 198 198">
+    <g fill="currentColor" transform="translate(24,153.5)">
+      <path d="M 50.40625 0 C 50.40625 -4.894531 51.003906 -9.394531 52.203125 -13.5 C 53.398438 -17.601563 54.75 -20.703125 56.25 -22.796875 C 57.050781 -23.898438 58.273438 -25.375 59.921875 -27.21875 C 61.578125 -29.070313 63.753906 -31.347656 66.453125 -34.046875 C 69.648438 -37.242188 71.921875 -39.867188 73.265625 -41.921875 C 74.617188 -43.972656 75.296875 -46.050781 75.296875 -48.15625 C 75.296875 -49.15625 75.195313 -50.050781 75 -50.84375 L 74.40625 -50.84375 C 74.300781 -50.050781 73.570313 -48.90625 72.21875 -47.40625 C 70.875 -45.90625 69.203125 -44.851563 67.203125 -44.25 C 66.203125 -43.945313 64.875 -43.671875 63.21875 -43.421875 C 61.570313 -43.171875 59.597656 -42.945313 57.296875 -42.75 C 56.097656 -41.945313 54.820313 -40.84375 53.46875 -39.4375 C 52.125 -38.039063 50.703125 -36.34375 49.203125 -34.34375 C 46.203125 -30.445313 43.5 -28.5 41.09375 -28.5 C 38.5 -28.5 36.375 -28.796875 34.71875 -29.390625 C 33.070313 -29.992188 31.75 -31.097656 30.75 -32.703125 L 24 -43.34375 C 24.695313 -44.644531 25.421875 -46.296875 26.171875 -48.296875 C 26.921875 -50.296875 27.75 -52.546875 28.65625 -55.046875 C 29.550781 -57.648438 30.472656 -59.875 31.421875 -61.71875 C 32.367188 -63.570313 33.242188 -65 34.046875 -66 C 35.742188 -68.195313 37.195313 -71.445313 38.40625 -75.75 C 39.195313 -78.644531 39.96875 -81.019531 40.71875 -82.875 C 41.46875 -84.726563 42.539063 -86.351563 43.9375 -87.75 C 45.34375 -89.144531 47.445313 -90.59375 50.25 -92.09375 C 51.144531 -95 51.59375 -98.050781 51.59375 -101.25 C 51.59375 -102.851563 51.492188 -104.425781 51.296875 -105.96875 C 51.097656 -107.519531 50.800781 -109.097656 50.40625 -110.703125 L 54 -110.703125 C 59.300781 -108.703125 62.5 -105.203125 63.59375 -100.203125 L 64.5 -100.203125 C 64.894531 -101.097656 65.191406 -102.59375 65.390625 -104.6875 C 65.597656 -106.789063 65.703125 -108.546875 65.703125 -109.953125 C 65.703125 -110.847656 65.675781 -111.742188 65.625 -112.640625 C 65.570313 -113.546875 65.5 -114.347656 65.40625 -115.046875 L 70.65625 -115.046875 C 73.65625 -113.453125 76.050781 -111.003906 77.84375 -107.703125 C 79.644531 -104.398438 80.546875 -100.847656 80.546875 -97.046875 C 86.742188 -95.347656 92.617188 -92.195313 98.171875 -87.59375 C 103.722656 -83 108.570313 -77.148438 112.71875 -70.046875 C 116.875 -62.953125 119.898438 -54.800781 121.796875 -45.59375 C 123.203125 -38.695313 124.253906 -31.570313 124.953125 -24.21875 C 125.648438 -16.875 126 -9.25 126 -1.34375 L 126 0 Z M 105.90625 -10.046875 L 115.796875 -10.046875 C 115.796875 -17.847656 115.367188 -25.445313 114.515625 -32.84375 C 113.671875 -40.25 112.347656 -47.050781 110.546875 -53.25 C 108.742188 -59.445313 106.34375 -64.644531 103.34375 -68.84375 C 101.144531 -72.050781 98.894531 -74.851563 96.59375 -77.25 C 94.300781 -79.644531 91.953125 -81.59375 89.546875 -83.09375 L 88.203125 -82.203125 C 92.398438 -78.703125 95.875 -74.828125 98.625 -70.578125 C 101.375 -66.328125 103.445313 -61 104.84375 -54.59375 C 106.25 -48.195313 106.953125 -39.898438 106.953125 -29.703125 C 106.953125 -26.003906 106.875 -22.503906 106.71875 -19.203125 C 106.570313 -15.898438 106.300781 -12.847656 105.90625 -10.046875 Z M 53.703125 -74.09375 C 55.003906 -74.09375 56.253906 -74.59375 57.453125 -75.59375 C 58.648438 -76.59375 59.898438 -77.09375 61.203125 -77.09375 L 62.40625 -76.953125 L 62.40625 -78.296875 L 58.203125 -79.5 C 57.597656 -79.695313 56.96875 -79.84375 56.3125 -79.9375 C 55.664063 -80.039063 55.046875 -80.09375 54.453125 -80.09375 C 52.847656 -80.09375 51.519531 -79.789063 50.46875 -79.1875 C 49.425781 -78.59375 48.90625 -77.75 48.90625 -76.65625 L 48.90625 -75.59375 L 49.046875 -75 C 49.847656 -74.394531 51.398438 -74.09375 53.703125 -74.09375 Z M 38.703125 -41.84375 C 39.003906 -43.25 39.703125 -44.875 40.796875 -46.71875 C 41.898438 -48.570313 43.453125 -50.195313 45.453125 -51.59375 L 44.84375 -52.34375 C 42.050781 -52.25 39.78125 -51.523438 38.03125 -50.171875 C 36.28125 -48.828125 35.15625 -47.15625 34.65625 -45.15625 C 35.050781 -44.351563 35.671875 -43.625 36.515625 -42.96875 C 37.367188 -42.320313 38.097656 -41.945313 38.703125 -41.84375 Z"/>
+    </g>
+  </symbol>
+  <symbol id="ic-prohibit" viewBox="0 0 16 16">
+    <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M4.5 4.5L11.5 11.5M11.5 4.5L4.5 11.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="ic-star" viewBox="0 0 16 16">
+    <polygon fill="currentColor" points="8,1 10,6 16,6 11,10 13,16 8,12 3,16 5,10 0,6 6,6"/>
+  </symbol>
+  <symbol id="ic-candle" viewBox="0 0 16 16">
+    <path d="M8 1C8 1 6 3 6 5C6 7 8 8 8 8C8 8 10 7 10 5C10 3 8 1 8 1Z" fill="#9b2226"/>
+    <path d="M8 7C8 7 7 8 7 9C7 10 7.5 10.5 8 10.5C8.5 10.5 9 10 9 9C9 8 8 7 8 7Z" fill="#e8a020"/>
+    <rect fill="#6b5040" height="4" width="2" x="7" y="10"/>
+    <rect fill="#6b5040" height="1.5" rx="0.5" width="6" x="5" y="14"/>
+  </symbol>
 </svg>
 
-<div class="page">
-<!-- ═══ HEADER ═══ -->
-<header class="header">
-<h1 class="title-main">El Grande</h1>
-<p class="title-sub">Ayuda de Jugador · Juego base 4–5 jugadores · 9 rondas · Puntuación general en rondas 3, 6, 9</p>
-</header>
-<!-- ═══ 2-COL BODY ═══ -->
-<div class="body">
-<!-- ──── LEFT COLUMN ──── -->
-<div class="col">
-<!-- PREPARACIÓN -->
-<div class="card">
-<div class="card-head ch-dark">Preparación</div>
-<div class="card-body">
-<ul class="sl">
-<li>Colocar el <b>Contador de Ronda</b> en la casilla 1 y el <span class="p p-cas"><svg class="ic" height="7" width="7"><use href="#ic-castle"></use></svg>Castillo</span> en su espacio</li>
-<li>Retirar las Cartas de Acción con <svg class="ic" height="9" width="9"><use href="#ic-candle"></use></svg> y <svg class="ic" height="9" width="9"><use href="#ic-flame"></use></svg> junto al título.<br/>Separar las <i>restantes</i> según <b>número de caballeros</b> en el reverso y revolver cada mazo por separado, dejándolos boca abajo</li>
-<li>Cada jugador elige un <i>color</i>. Toma las <b>13 Cartas de Poder</b> + 1 <b>disco secreto</b></li>
-<li>Barajar las <b>9 Cartas de Región</b>. La 1ª → <span class="p p-king"><svg class="ic" height="7" width="7"><use href="#ic-king"></use></svg>Región del Rey</span>. <br>Cada jugador roba 1 → coloca <b>Grande</b> <svg class="ic" height="11" width="11"><use href="#ic-grande-brown"></use></svg> + 2 caballeros <svg class="ic" height="10" width="9"><use href="#ic-knight-brown"></use></svg> en esa región. Devolver el resto.</li>
-<li class="hl"><b>Cada jugador: 7 caballeros</b> <svg class="ic" height="10" width="9"><use href="#ic-knight-brown"></use></svg> a su <span class="p p-crt"><svg class="ic" height="7" width="6"><use href="#ic-court"></use></svg>Corte</span>. Los 21 restantes → <span class="p p-prv"><svg class="ic" height="7" width="7"><use href="#ic-province"></use></svg>Provincia</span></li>
-</ul>
-</div>
-</div>
-<!-- FASES DE LA RONDA -->
-<div class="card">
-<div class="card-head ch-red">Fases de la ronda</div>
-<div class="card-body">
-<div class="steps">
-<div class="st">
-<div class="sn sn-r">1</div>
-<div class="sb"><b>Revelar Cartas de Acción:</b> voltear la superior de cada uno de los 5 mazos</div>
-</div>
-<div class="st">
-<div class="sn sn-r">2</div>
-<div class="sb"><b>Jugar Cartas de Poder:</b> desde jugador inicial, en sentido horario. 1 carta boca arriba. <span class="hl" style="font-weight:700;">⚠ Valor único</span> (no repetir valor ya jugado)</div>
-</div>
-<div class="st">
-<div class="sn sn-r">3</div>
-<div class="sb"><b>Turnos:</b> de mayor a menor valor. Cada jugador ejecuta su turno completo</div>
-</div>
-<div class="st">
-<div class="sn sn-r">4</div>
-<div class="sb"><b>Fin de ronda:</b> descartar Cartas de Acción sobrantes (<i>nunca</i> "Su Majestad": vuelve boca abajo al mazo 5). Valor <b>más bajo</b> → ficha de jugador inicial. Descartar Cartas de Poder boca abajo. Avanzar marcador</div>
-</div>
-</div>
-<div class="n" style="margin-top:1.5px;">Tras rondas 3, 6 y 9 → Puntuación General antes de la siguiente ronda.</div>
-</div>
-</div>
-<!-- TU TURNO -->
-<div class="card">
-<div class="card-head ch-red">Tu turno</div>
-<div class="card-body">
-<div class="steps">
-<div class="st">
-<div class="sn sn-g">A</div>
-<div class="sb"><b>Traer caballeros <svg class="ic" height="10" width="9"><use href="#ic-knight-gold"></use></svg> a la <span class="p p-crt"><svg class="ic" height="7" width="6"><use href="#ic-court"></use></svg>Corte</span>:</b> toma de la <span class="p p-prv"><svg class="ic" height="7" width="7"><use href="#ic-province"></use></svg>Provincia</span> hasta el nº indicado en tu Carta de Poder. <i>Si no quedan en Provincia → tómalos de regiones (nunca del Castillo).</i></div>
-</div>
-<div class="st">
-<div class="sn sn-g">B</div>
-<div class="sb"><b>Usar 1 Carta de Acción</b> revelada. Ejecuta sus 2 acciones <b>en cualquier orden</b> (completar una antes de la otra):</div>
-</div>
-</div>
-<div style="margin-left:20px;padding-left:6px;display:flex;flex-direction:column;gap:3px;margin-top:2px;">
-<div class="r"><b>① Colocar caballeros</b> <svg class="ic" height="10" width="9"><use href="#ic-knight-brown"></use></svg> (hasta nº de la carta). Solo desde <span class="p p-crt"><svg class="ic" height="7" width="6"><use href="#ic-court"></use></svg>Corte</span>. Solo en <b>regiones vecinas</b> de la <span class="p p-king"><svg class="ic" height="7" width="7"><use href="#ic-king"></use></svg>Región del Rey</span> o al <span class="p p-cas"><svg class="ic" height="7" width="7"><use href="#ic-castle"></use></svg>Castillo</span>. Distribúyelos como quieras</div>
-<div class="r"><b>② Acción especial</b> (opcional). Si la ejecutas, complétala lo más posible aunque beneficie a otros</div>
-</div>
-</div>
-</div>
-<!-- CASTILLO -->
-<div class="card">
-<div class="card-head ch-dark">El Castillo</div>
-<div class="card-body">
-<div class="r"><span class="p p-cas"><svg class="ic" height="7" width="7"><use href="#ic-castle"></use></svg>Castillo</span> <b>NO es una región.</b> Al lanzar caballeros, <b>anuncia cuántos</b>. Nadie puede mirar adentro ni sacar caballeros. Solo se abre en puntuación general o con acción especial (ej. <i>Revelación</i>).</div>
-</div>
-</div>
-<!-- TABÚ DEL REY -->
-<div class="taboo">
-<svg class="ic" height="14" width="14"><use href="#ic-prohibit"></use></svg>
-<span>LA <span class="p p-king" style="background:rgba(255,255,255,0.2);color:#fff;"><svg class="ic" height="8" width="8"><use href="#ic-king-white"></use></svg>REGIÓN DEL REY</span> ES TABÚ — Nunca colocar, mover ni retirar caballeros, Grandes o losetas de/hacia esa región. <b>Sin excepciones.</b> <i>(Única excepción: Infiltración — solo permite colocar ahí.)</i> Sí se puede puntuar.</span>
-</div>
-</div>
-<!-- ──── RIGHT COLUMN ──── -->
-<div class="col">
-<!-- PUNTUACIÓN GENERAL -->
-<div class="card">
-<div class="card-head ch-gold">Puntuación general (rondas 3, 6, 9)</div>
-<div class="card-body">
-<div class="steps">
-<div class="st">
-<div class="sn sn-r">a</div>
-<div class="sb"><b>Disco secreto:</b> todos eligen simultáneamente <b>1 sola región</b> para sus caballeros del <span class="p p-cas"><svg class="ic" height="7" width="7"><use href="#ic-castle"></use></svg>Castillo</span>. No dividir. Si eliges la <span class="p p-king"><svg class="ic" height="7" width="7"><use href="#ic-king"></use></svg>Región del Rey</span> o el disco no queda claro → regresan a <span class="p p-crt"><svg class="ic" height="7" width="6"><use href="#ic-court"></use></svg>Corte</span></div>
-</div>
-<div class="st">
-<div class="sn sn-r">b</div>
-<div class="sb"><b>Puntuar <span class="p p-cas"><svg class="ic" height="7" width="7"><use href="#ic-castle"></use></svg>Castillo</span>:</b> abrir puerta, separar por color, puntuar mayoría (<b>5 / 3 / 1</b>). Revelar discos → mover caballeros a regiones elegidas</div>
-</div>
-<div class="st">
-<div class="sn sn-r">c</div>
-<div class="sb"><b>Puntuar regiones</b> en orden del resumen del tablero (arriba→abajo). 1°, 2° y 3° según mayoría y tablero de puntuación de cada región</div>
-</div>
-</div>
-</div>
-</div>
-<!-- BONIFICACIONES -->
-<div class="card">
-<div class="card-head ch-gold">Bonificaciones</div>
-<div class="card-body">
-<div class="r"><b>Bonus del Rey:</b> <span class="p p-pts"><svg class="ic" height="7" width="7"><use href="#ic-star"></use></svg>+2 pts</span> si tienes 1° lugar en la <span class="p p-king"><svg class="ic" height="7" width="7"><use href="#ic-king"></use></svg>Región del Rey</span></div>
-<div class="r"><b>Bonus del Grande:</b> <span class="p p-pts"><svg class="ic" height="7" width="7"><use href="#ic-star"></use></svg>+2 pts</span> si tienes 1° lugar en la región con tu Grande<svg class="ic" height="11" width="11"><use href="#ic-grande-brown"></use></svg></div>
-<div class="dv"></div>
-<div class="r"><b>El Grande <svg class="ic" height="11" width="11"><use href="#ic-grande-dark"></use></svg> otorga bonus, pero NO cuenta para determinar mayorías.</b> No al <span class="p p-cas"><svg class="ic" height="7" width="7"><use href="#ic-castle"></use></svg>Castillo</span> (salvo <i>Competición</i>) ni a la <span class="p p-king"><svg class="ic" height="7" width="7"><use href="#ic-king"></use></svg>Región del Rey</span>.</div>
-<div class="n">Ambos aplican en puntuación general y especial. Se pueden acumular en una misma región.</div>
-</div>
-</div>
-<!-- EMPATES -->
-<div class="card">
-<div class="card-head ch-gold">Empates</div>
-<div class="card-body">
-<div class="r">Todos los empatados puntúan la <b>siguiente posición inferior</b>. Ej: 3 empatados en 1° → todos puntúan como 2°. <b>En empate no hay bonus.</b></div>
-</div>
-</div>
-<!-- MOVER CABALLEROS -->
-<div class="card">
-<div class="card-head ch-green">Mover caballeros (acc. especiales)</div>
-<div class="card-body">
-<ul class="bl">
-<li>Pueden ir a <b>cualquier región</b> (no solo vecinas del Rey). También al Castillo si la carta no dice "a una región"</li>
-<li><b>Nunca</b> desde el Castillo, desde/hacia la <span class="p p-king"><svg class="ic" height="7" width="7"><use href="#ic-king"></use></svg>Región del Rey</span>, ni desde la <span class="p p-crt"><svg class="ic" height="7" width="6"><use href="#ic-court"></use></svg>Corte</span></li>
-<li><b>Devolver a <span class="p p-prv"><svg class="ic" height="7" width="7"><use href="#ic-province"></use></svg>Provincia</span>:</b> cartas como <i>Retirada</i> y <i>Guerra Civil</i></li>
-</ul>
-</div>
-</div>
-<!-- LOSETAS -->
-<div class="card">
-<div class="card-head ch-green">Losetas de puntuación</div>
-<div class="card-body">
-<div class="r">Solo con carta <i>Decreto</i>. <b>Reemplazan</b> valores impresos. Máx. 1 por región. En el <span class="p p-cas"><svg class="ic" height="7" width="7"><use href="#ic-castle"></use></svg>Castillo</span> reemplaza <b>ambos</b> tableros. No en la <span class="p p-king"><svg class="ic" height="7" width="7"><use href="#ic-king"></use></svg>Región del Rey</span>.</div>
-</div>
-</div>
-<!-- FÁCIL DE OLVIDAR -->
-<div class="card">
-<div class="card-head ch-green">Fácil de olvidar</div>
-<div class="card-body">
-<ul class="bl">
-<li><b>Provincia vacía:</b> si no quedan propios en Provincia al traer a Corte, tómalos de regiones (nunca del Castillo). Aplica por Carta de Poder y Carta de Acción</li>
-<li><b>Milicia</b> es <i>colocar</i> desde Corte a cualquier región (sin restricción de vecindad) — no es <i>mover</i></li>
-<li><b>Puntuar con carta de acción:</b> sí puedes elegir la <span class="p p-king"><svg class="ic" height="7" width="7"><use href="#ic-king"></use></svg>Región del Rey</span>. No el Castillo (salvo que la carta lo indique)</li>
-<li><b>Disco secreto en acciones:</b> cartas como <i>Golpe</i> y <i>Rivalidades</i> usan el disco fuera de puntuación general</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<!-- ═══ POWER CARD STRIP ═══ -->
-<div class="power-strip">
-<div class="power-label">Carta de Poder<br/>→ Caballeros</div>
-<div class="power-grid">
-<div class="pg-h">1</div><div class="pg-h">2</div><div class="pg-h">3</div><div class="pg-h">4</div><div class="pg-h">5</div><div class="pg-h">6</div><div class="pg-h">7</div><div class="pg-h">8</div><div class="pg-h">9</div><div class="pg-h">10</div><div class="pg-h">11</div><div class="pg-h">12</div><div class="pg-h">13</div>
-<div class="pg-v">5</div><div class="pg-v">5</div><div class="pg-v">4</div><div class="pg-v">4</div><div class="pg-v">3</div><div class="pg-v">3</div><div class="pg-v">2</div><div class="pg-v">2</div><div class="pg-v">2</div><div class="pg-v">1</div><div class="pg-v">1</div><div class="pg-v">0</div><div class="pg-v">0</div>
-</div>
-<div class="power-note">Alto = turno primero, menos caballeros<br/>Bajo = más caballeros + jugador inicial</div>
-</div>
-<!-- ═══ FOOTER ═══ -->
-<div class="footer">
-    El Grande · Wolfgang Kramer &amp; Richard Ulrich · Hans im Glück · 1995 / 2023 · Ayuda no oficial
+<div class="panel">
+
+  <div class="header">
+    <div class="title-main">El Grande</div>
+    <div class="title-sub">Ayuda de Jugador &nbsp;·&nbsp; 2–5 jugadores &nbsp;·&nbsp; 9 rondas &nbsp;·&nbsp; Puntuación general en rondas 3, 6 y 9</div>
   </div>
+
+  <div class="body">
+
+    <!-- ════ LEFT ════ -->
+    <div class="col">
+
+      <div>
+        <div class="sec">Preparación</div>
+        <div class="steps">
+          <div class="step"><span class="num num-d">1</span><span class="sb">Colocar el <strong>Contador de Ronda</strong> en casilla 1 y el <span class="p p-cas"><svg class="ic" width="9" height="9"><use href="#ic-castle"/></svg> Castillo</span> en su espacio.</span></div>
+          <div class="step"><span class="num num-d">2</span><span class="sb">Retirar Cartas de Acción marcadas con <svg class="ic" width="9" height="9"><use href="#ic-candle"/></svg>. Separar las <em>restantes</em> por <strong>número de caballeros</strong> en el reverso. Barajar cada mazo por separado, boca abajo.</span></div>
+          <div class="step"><span class="num num-d">3</span><span class="sb">Cada jugador elige color: toma sus <strong>13 Cartas de Poder</strong> + 1 <strong>disco secreto</strong>.</span></div>
+          <div class="step"><span class="num num-d">4</span><span class="sb">Barajar las <strong>9 Cartas de Región</strong>. La 1.ª → <span class="p p-king"><svg class="ic" width="9" height="9"><use href="#ic-king"/></svg> Región del Rey</span>. Cada jugador roba 1 → coloca su <strong>Grande</strong> <svg class="ic" width="11" height="11" style="color:#6b3a10"><use href="#ic-grande"/></svg> + 2 caballeros <svg class="ic" width="10" height="10" style="color:#6b3a10"><use href="#ic-knight"/></svg> en esa región. Devolver el resto.</span></div>
+          <div class="step"><span class="num num-d">5</span><span class="sb"><strong>7 caballeros</strong> <svg class="ic" width="10" height="10" style="color:#6b3a10"><use href="#ic-knight"/></svg> de cada jugador a su <span class="p p-crt"><svg class="ic" width="9" height="9"><use href="#ic-court"/></svg> Corte</span>. Los 21 restantes → <span class="p p-prv"><svg class="ic" width="9" height="9"><use href="#ic-province"/></svg> Provincia</span>.</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec">Fases de la Ronda</div>
+        <div class="steps">
+          <div class="step"><span class="num">1</span><span class="sb"><strong class="vb">Revelar</strong> Cartas de Acción: voltear la superior de cada uno de los 5 mazos.</span></div>
+          <div class="step"><span class="num">2</span><span class="sb"><strong class="vb">Jugar</strong> Cartas de Poder: desde el jugador inicial, en sentido horario, 1 carta boca arriba. <em>El valor debe ser único — nadie repite un valor ya jugado esta ronda.</em></span></div>
+          <div class="step"><span class="num">3</span><span class="sb"><strong class="vb">Turnos</strong> de mayor a menor valor de carta. Cada jugador ejecuta su turno completo.</span></div>
+          <div class="step"><span class="num">4</span><span class="sb"><strong class="vb">Fin de ronda:</strong> descartar Cartas de Acción sobrantes — <em>"Su Majestad" vuelve boca abajo al mazo 5</em>. El valor <strong>más bajo</strong> otorga la ficha de jugador inicial. Descartar Cartas de Poder boca abajo. Avanzar marcador.</span></div>
+        </div>
+        <div class="rule-note">Tras rondas 3, 6 y 9 → Puntuación General antes de continuar.</div>
+      </div>
+
+      <div>
+        <div class="sec">Tu Turno</div>
+        <div class="steps">
+          <div class="step">
+            <span class="num num-g">A</span>
+            <span class="sb"><strong class="vb">Traer</strong> caballeros <svg class="ic" width="10" height="10" style="color:#6b3a10"><use href="#ic-knight"/></svg> a la <span class="p p-crt"><svg class="ic" width="9" height="9"><use href="#ic-court"/></svg> Corte</span>: toma de la <span class="p p-prv"><svg class="ic" width="9" height="9"><use href="#ic-province"/></svg> Provincia</span> hasta el número de tu Carta de Poder. <em>Sin caballeros en Provincia → tómalos de regiones (nunca del Castillo).</em></span>
+          </div>
+          <div class="step">
+            <span class="num num-g">B</span>
+            <span class="sb"><strong class="vb">Usar</strong> 1 Carta de Acción revelada. Ejecuta sus 2 acciones en <strong>cualquier orden</strong> (completa una antes de empezar la otra):
+              <div class="subs">
+                <div class="sub"><span class="sl">①</span><span><strong>Colocar caballeros</strong> <svg class="ic" width="9" height="9" style="color:#6b3a10"><use href="#ic-knight"/></svg> (hasta nº de la carta). Solo desde la <span class="p p-crt"><svg class="ic" width="8" height="8"><use href="#ic-court"/></svg> Corte</span>. Solo en regiones <strong>vecinas</strong> de la <span class="p p-king"><svg class="ic" width="8" height="8"><use href="#ic-king"/></svg> Región del Rey</span> o al <span class="p p-cas"><svg class="ic" width="8" height="8"><use href="#ic-castle"/></svg> Castillo</span>.</span></div>
+                <div class="sub"><span class="sl">②</span><span><strong>Acción especial</strong> <em>(opcional)</em>. Si la ejecutas, complétala lo más posible aunque beneficie a otros.</span></div>
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="box-head bh-dark">
+          <svg class="ic" width="11" height="11"><use href="#ic-castle"/></svg>
+          El Castillo
+        </div>
+        <div class="box-body">
+          <div style="font-size:7pt;line-height:1.33;"><span class="p p-cas"><svg class="ic" width="8" height="8"><use href="#ic-castle"/></svg> Castillo</span> <strong>no es una región.</strong> Al colocar caballeros, <strong>anuncia cuántos</strong>. Nadie puede mirar dentro ni retirar caballeros. Solo se abre en Puntuación General o con acción especial <em>(ej. Revelación)</em>.</div>
+        </div>
+      </div>
+
+      <div class="warn">
+        <svg class="ic" width="14" height="14" style="color:var(--crimson);flex-shrink:0;margin-top:0.05em"><use href="#ic-prohibit"/></svg>
+        <span style="font-size:7pt;line-height:1.33;"><strong>La <span class="p p-king"><svg class="ic" width="9" height="9"><use href="#ic-king"/></svg> Región del Rey</strong> es tabú</span> — nunca colocar, mover ni retirar caballeros, Grandes o losetas. <strong>Sin excepciones.</strong> <em>El Rey solo cambia de región mediante cartas de acción que lo indiquen. Única excepción: Infiltración (permite colocar ahí). Sí se puede puntuar.</em></span>
+      </div>
+
+    </div>
+
+    <!-- ════ RIGHT ════ -->
+    <div class="col">
+
+      <div class="box">
+        <div class="box-head bh-gold">
+          <svg class="ic" width="11" height="11" style="color:#faf0dc"><use href="#ic-star"/></svg>
+          Puntuación General — Rondas 3, 6 y 9
+        </div>
+        <div class="box-body">
+          <div class="steps">
+            <div class="step"><span class="num num-o">a</span><span class="sb"><strong>Disco secreto:</strong> todos eligen simultáneamente <strong>1 sola región</strong> para los caballeros del <span class="p p-cas"><svg class="ic" width="8" height="8"><use href="#ic-castle"/></svg> Castillo</span>. Sin dividir. Si eliges la <span class="p p-king"><svg class="ic" width="8" height="8"><use href="#ic-king"/></svg> Región del Rey</span> o el disco no queda claro → regresan a <span class="p p-crt"><svg class="ic" width="8" height="8"><use href="#ic-court"/></svg> Corte</span>.</span></div>
+            <div class="step"><span class="num num-o">b</span><span class="sb"><strong class="vb">Puntuar</strong> <span class="p p-cas"><svg class="ic" width="8" height="8"><use href="#ic-castle"/></svg> Castillo</span>: abrir puerta, separar por color, mayoría <strong>5 / 3 / 1</strong>. Revelar discos → mover caballeros a las regiones elegidas.</span></div>
+            <div class="step"><span class="num num-o">c</span><span class="sb"><strong class="vb">Puntuar</strong> regiones en el orden del resumen del tablero (arriba → abajo). 1.°, 2.° y 3.° según mayoría y tabla de puntuación de cada región.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec">Bonificaciones</div>
+        <div style="display:flex;flex-direction:column;gap:0.05cm;font-size:7pt;line-height:1.33;">
+          <div><strong>Bonus del Rey:</strong> <span class="p p-pts"><svg class="ic" width="9" height="9" style="color:var(--gold)"><use href="#ic-star"/></svg> +2 pts</span> si tienes 1.° lugar en la <span class="p p-king"><svg class="ic" width="8" height="8"><use href="#ic-king"/></svg> Región del Rey</span>.</div>
+          <div><strong>Bonus del Grande:</strong> <span class="p p-pts"><svg class="ic" width="9" height="9" style="color:var(--gold)"><use href="#ic-star"/></svg> +2 pts</span> si tienes 1.° lugar en la región de tu <strong>Grande</strong> <svg class="ic" width="11" height="11" style="color:#6b3a10"><use href="#ic-grande"/></svg>.</div>
+          <div class="dv"></div>
+          <div><em>El Grande <svg class="ic" width="11" height="11" style="color:#1a1208"><use href="#ic-grande"/></svg> otorga el bonus pero <strong>no cuenta para determinar mayorías</strong>. No puede ir al <span class="p p-cas"><svg class="ic" width="8" height="8"><use href="#ic-castle"/></svg> Castillo</span> <em style="color:var(--dim)">(salvo Competición)</em> ni a la <span class="p p-king"><svg class="ic" width="8" height="8"><use href="#ic-king"/></svg> Región del Rey</span>.</em></div>
+          <div class="rule-note">Ambos bonuses aplican en puntuación general y especial. Se acumulan en la misma región.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec">Empates</div>
+        <div style="font-size:7pt;line-height:1.33;">Todos los empatados puntúan la <strong>siguiente posición inferior</strong>. Ej: 3 empatados en 1.° → todos puntúan como 2.°. <em>En empate no aplican el bonus del Rey ni el del Grande.</em></div>
+      </div>
+
+      <div>
+        <div class="sec">Acciones especiales — Mover caballeros</div>
+        <ul class="bl">
+          <li>Pueden ir a <strong>cualquier región</strong> (no solo vecinas del Rey). También al <span class="p p-cas"><svg class="ic" width="8" height="8"><use href="#ic-castle"/></svg> Castillo</span> si la carta no especifica "a una región".</li>
+          <li><strong>Nunca</strong> desde el Castillo · desde/hacia la <span class="p p-king"><svg class="ic" width="8" height="8"><use href="#ic-king"/></svg> Región del Rey</span> · desde la <span class="p p-crt"><svg class="ic" width="8" height="8"><use href="#ic-court"/></svg> Corte</span>.</li>
+          <li><strong>Devolver a <span class="p p-prv"><svg class="ic" width="8" height="8"><use href="#ic-province"/></svg> Provincia</span>:</strong> cartas como <em>Retirada</em> y <em>Guerra Civil</em>.</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="sec">Losetas de Puntuación</div>
+        <div style="font-size:7pt;line-height:1.33;">Solo con carta <em>Decreto</em>. <strong>Reemplazan</strong> los valores impresos. Máx. 1 por región. En el <span class="p p-cas"><svg class="ic" width="8" height="8"><use href="#ic-castle"/></svg> Castillo</span> reemplazan <strong>ambas</strong> tablas. No en la <span class="p p-king"><svg class="ic" width="8" height="8"><use href="#ic-king"/></svg> Región del Rey</span>.</div>
+      </div>
+
+      <div class="forget-box">
+        <div class="forget-head">Fácil de olvidar</div>
+        <ul class="bl">
+          <li><strong>Provincia vacía:</strong> toma caballeros de regiones (nunca del Castillo). Aplica al traer a Corte (paso A) <em>y</em> mediante cartas de acción.</li>
+          <li><strong>Milicia</strong> es <em>colocar</em> desde Corte a cualquier región sin restricción de vecindad — no es <em>mover</em>.</li>
+          <li><strong>Puntuar con carta de acción:</strong> puedes elegir la <span class="p p-king"><svg class="ic" width="8" height="8"><use href="#ic-king"/></svg> Región del Rey</span>. No el Castillo (salvo que la carta lo indique explícitamente).</li>
+          <li><strong>Disco en acciones:</strong> cartas como <em>Golpe</em> y <em>Rivalidades</em> usan el disco secreto fuera de la Puntuación General.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- POWER CARD STRIP -->
+  <div class="power-strip">
+    <div class="power-label">Carta de Poder<br>→ Caballeros <svg class="ic" width="9" height="9" style="color:#6b3a10"><use href="#ic-knight"/></svg></div>
+    <div class="power-grid">
+      <div class="pg-h">1</div><div class="pg-h">2</div><div class="pg-h">3</div><div class="pg-h">4</div><div class="pg-h">5</div><div class="pg-h">6</div><div class="pg-h">7</div><div class="pg-h">8</div><div class="pg-h">9</div><div class="pg-h">10</div><div class="pg-h">11</div><div class="pg-h">12</div><div class="pg-h">13</div>
+      <div class="pg-v">5</div><div class="pg-v">5</div><div class="pg-v">4</div><div class="pg-v">4</div><div class="pg-v">3</div><div class="pg-v">3</div><div class="pg-v">2</div><div class="pg-v">2</div><div class="pg-v">2</div><div class="pg-v">1</div><div class="pg-v">1</div><div class="pg-v">0</div><div class="pg-v">0</div>
+    </div>
+    <div class="power-note">Alto → turno primero, menos <svg class="ic" width="9" height="9" style="color:#6b3a10"><use href="#ic-knight"/></svg><br>Bajo → más <svg class="ic" width="9" height="9" style="color:#6b3a10"><use href="#ic-knight"/></svg> + jugador inicial</div>
+  </div>
+
 </div>
-<button class="print-btn" onclick="window.print()">🖨 Imprimir / Guardar como PDF</button>
-</body></html>
+
+<button class="print-btn" onclick="window.print()">Imprimir / Guardar como PDF</button>
+</body>
+</html>

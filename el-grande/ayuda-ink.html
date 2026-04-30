@@ -79,7 +79,7 @@ body {
 .steps { display: flex; flex-direction: column; gap: 0.05cm; }
 .step  { display: flex; align-items: flex-start; gap: 0.3em; font-size: 7pt; line-height: 1.33; }
 .num {
-  background: white; color: var(--crimson); border: 1px solid var(--crimson);
+  background: var(--crimson); color: #faf0dc;
   border-radius: 50%;
   width: 1.5em; height: 1.5em; min-width: 1.5em;
   display: flex; align-items: center; justify-content: center;
@@ -87,9 +87,9 @@ body {
   line-height: 1; flex-shrink: 0;
   print-color-adjust: exact; -webkit-print-color-adjust: exact;
 }
-.num-g { background: white; color: var(--green); border-color: var(--green); }
-.num-d { background: white; color: var(--dark); border-color: var(--dark); }
-.num-o { background: white; color: var(--gold); border-color: var(--gold); }
+.num-g { background: var(--green); }
+.num-d { background: var(--dark); }
+.num-o { background: var(--gold); }
 .sb { flex: 1; }
 strong { font-weight: 700; }
 em { color: var(--dim); font-style: italic; }
@@ -118,13 +118,13 @@ em { color: var(--dim); font-style: italic; }
   font-family: 'Cinzel', serif;
   font-size: 7pt; font-weight: 700;
   letter-spacing: 0.07em; text-transform: uppercase;
-  color: var(--ink);
+  color: #faf0dc;
   padding: 0.07cm 0.22cm;
   display: flex; align-items: center; gap: 0.28em;
   print-color-adjust: exact; -webkit-print-color-adjust: exact;
 }
-.bh-dark { background: white; border-bottom: 1.5px solid var(--dark); }
-.bh-gold { background: white; border-bottom: 1.5px solid var(--gold); }
+.bh-dark { background: var(--dark); }
+.bh-gold { background: var(--gold); }
 .box-body { padding: 0.09cm 0.18cm; display: flex; flex-direction: column; gap: 0.05cm; }
 
 /* ── Warning callout ── */
@@ -335,7 +335,7 @@ em { color: var(--dim); font-style: italic; }
 
       <div class="box">
         <div class="box-head bh-gold">
-          <svg class="ic" width="11" height="11" style="color:var(--gold)"><use href="#ic-star"/></svg>
+          <svg class="ic" width="11" height="11" style="color:#faf0dc"><use href="#ic-star"/></svg>
           Puntuación General — Rondas 3, 6 y 9
         </div>
         <div class="box-body">
@@ -350,8 +350,8 @@ em { color: var(--dim); font-style: italic; }
       <div>
         <div class="sec">Bonificaciones</div>
         <div style="display:flex;flex-direction:column;gap:0.05cm;font-size:7pt;line-height:1.33;">
-          <div><strong>Bonus del Rey:</strong> <span class="p p-pts"><svg class="ic" width="9" height="9" style="color:var(--gold)"><use href="#ic-star"/></svg> +2 pts</span> si tienes 1.° lugar en la <span class="p p-king"><svg class="ic" width="8" height="8"><use href="#ic-king"/></svg> Región del Rey</span>.</div>
-          <div><strong>Bonus del Grande:</strong> <span class="p p-pts"><svg class="ic" width="9" height="9" style="color:var(--gold)"><use href="#ic-star"/></svg> +2 pts</span> si tienes 1.° lugar en la región de tu <strong>Grande</strong> <svg class="ic" width="11" height="11" style="color:#6b3a10"><use href="#ic-grande"/></svg>.</div>
+          <div><strong>Bonus del Rey:</strong> <span class="p p-pts"><svg class="ic" width="9" height="9" style="color:#faf0dc"><use href="#ic-star"/></svg> +2 pts</span> si tienes 1.° lugar en la <span class="p p-king"><svg class="ic" width="8" height="8"><use href="#ic-king"/></svg> Región del Rey</span>.</div>
+          <div><strong>Bonus del Grande:</strong> <span class="p p-pts"><svg class="ic" width="9" height="9" style="color:#faf0dc"><use href="#ic-star"/></svg> +2 pts</span> si tienes 1.° lugar en la región de tu <strong>Grande</strong> <svg class="ic" width="11" height="11" style="color:#6b3a10"><use href="#ic-grande"/></svg>.</div>
           <div class="dv"></div>
           <div><em>El Grande <svg class="ic" width="11" height="11" style="color:#1a1208"><use href="#ic-grande"/></svg> otorga el bonus pero <strong>no cuenta para determinar mayorías</strong>. No puede ir al <span class="p p-cas"><svg class="ic" width="8" height="8"><use href="#ic-castle"/></svg> Castillo</span> <em style="color:var(--dim)">(salvo Competición)</em> ni a la <span class="p p-king"><svg class="ic" width="8" height="8"><use href="#ic-king"/></svg> Región del Rey</span>.</em></div>
           <div class="rule-note">Ambos bonuses aplican en puntuación general y especial. Se acumulan en la misma región.</div>

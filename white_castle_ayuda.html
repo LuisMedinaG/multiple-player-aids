@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>The White Castle — Ayuda de Jugador v6</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+  font-family:'EB Garamond',serif;
+  background:#c8b89a;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+}
+
+@page{size:letter portrait;margin:0;}
+
+.page{
+  width:216mm;
+  height:279mm;
+  background:#f0e6d0;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(180,140,90,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 90%, rgba(120,80,40,0.08) 0%, transparent 60%);
+  margin:0 auto;
+  padding:5mm 7mm 4mm;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  position:relative;
+  overflow:hidden;
+}
+
+.page::before,.page::after{
+  content:'';position:absolute;width:12mm;height:12mm;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cpath d='M5 5 L5 25 M5 5 L25 5 M5 15 L15 5' stroke='%23876040' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='5' cy='5' r='2' fill='%23876040'/%3E%3C/svg%3E");
+  background-size:contain;background-repeat:no-repeat;opacity:0.3;
+}
+.page::before{top:3mm;left:4mm;}
+.page::after{bottom:3mm;right:4mm;transform:rotate(180deg);}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:2px 0 3px;border-bottom:2px solid #876040;}
+.title-jp{font-size:7px;letter-spacing:5px;color:#876040;font-family:'Cinzel',serif;}
+.title-en{font-family:'Cinzel',serif;font-size:17px;font-weight:700;color:#3d2008;line-height:1.15;letter-spacing:1.5px;}
+.title-sub{font-family:'EB Garamond',serif;font-style:italic;font-size:8.5px;color:#876040;margin-top:1px;}
+
+/* ── BODY ── */
+.body{display:grid;grid-template-columns:1fr 1fr;gap:6mm;flex:1;}
+.col{display:flex;flex-direction:column;gap:3px;}
+
+/* ── SECTION ── */
+.sec{display:flex;flex-direction:column;gap:1px;}
+.sec-head{
+  font-family:'Cinzel',serif;font-size:7.5px;font-weight:600;letter-spacing:1px;
+  text-transform:uppercase;color:#f0e6d0;padding:2.5px 8px;border-radius:2px;
+}
+.sh-setup{background:#6a5a48;}
+.sh-game{background:#5a2d0c;}
+.sh-timing{background:#2d5a5a;}
+.sh-score{background:#4a3050;}
+.sh-ref{background:#4a5a38;}
+.sh-ascenso{background:linear-gradient(135deg, #5a2d0c 60%, #7a4020);}
+.sec-body{padding:3px 3px 2px;display:flex;flex-direction:column;gap:2.5px;}
+
+/* ── TEXT ── */
+.r{font-size:10px;line-height:1.4;color:#2a1505;}
+.r b{font-weight:600;}
+.r i{font-style:italic;color:#6b3a10;}
+.detail{font-size:9px;font-style:italic;color:#7a6a50;line-height:1.3;}
+.n{font-size:9px;color:#6b3a10;line-height:1.3;font-style:italic;}
+.warn{font-size:8.5px;color:#8b1a1a;font-style:italic;line-height:1.35;padding:2px 6px;border-left:2px solid #8b1a1a;background:rgba(139,26,26,0.05);border-radius:0 2px 2px 0;}
+.dv{height:0.5px;background:#c4a572;margin:2px 0;}
+
+/* ── COIN COMPARE ── */
+.coin-compare{
+  display:grid;grid-template-columns:1fr 1fr;gap:4px;
+  margin:2px 0;padding:3px 6px;
+  border:1px solid #c4a572;border-radius:3px;
+  background:rgba(180,140,90,0.06);
+  font-size:9.5px;line-height:1.35;color:#2a1505;
+}
+.coin-col{padding:0 2px;}
+.coin-note{
+  grid-column:1/-1;text-align:center;
+  font-size:8.5px;color:#9a8a70;font-style:italic;
+  margin-top:-1px;
+}
+
+/* ── PILLS ── */
+.k-lantern{
+  background:rgba(212,168,32,0.22);color:#7a5a00;
+  padding:0 3px;border-radius:2px;font-weight:600;white-space:nowrap;
+}
+.k-lantern::before{content:'🏮 ';font-size:7px;}
+.k-seal{
+  background:rgba(192,98,42,0.18);color:#8a3a10;
+  padding:0 3px;border-radius:2px;font-weight:600;white-space:nowrap;
+}
+.k-seal::before{content:'◆ ';font-size:6px;}
+.k-coin{
+  background:rgba(212,168,32,0.15);color:#6a5000;
+  padding:0 3px;border-radius:2px;font-weight:600;white-space:nowrap;
+}
+.k-pc{
+  background:rgba(139,26,26,0.1);color:#7a1a1a;
+  padding:0 3px;border-radius:2px;font-weight:700;white-space:nowrap;
+}
+.k-action{
+  background:rgba(90,45,12,0.12);color:#5a2d0c;
+  padding:0 3px;border-radius:2px;font-weight:600;font-style:italic;white-space:nowrap;
+}
+
+/* ── STEPS ── */
+.steps{display:flex;flex-direction:column;gap:2.5px;}
+.step{display:flex;gap:5px;align-items:flex-start;}
+.step-num{
+  width:14px;height:14px;flex-shrink:0;
+  background:#5a2d0c;color:#f0e6d0;
+  font-family:'Cinzel',serif;font-size:7.5px;font-weight:600;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  margin-top:1px;
+}
+.step-body{flex:1;font-size:10px;line-height:1.4;color:#2a1505;}
+.step-body b{font-weight:600;}
+.step-body .detail{display:block;margin-top:1px;}
+
+/* ── TABLE ── */
+.act-table{width:100%;border-collapse:collapse;font-size:9.5px;}
+.act-table th{
+  background:#5a2d0c;color:#f0e6d0;
+  font-family:'Cinzel',serif;font-size:7px;font-weight:600;letter-spacing:.5px;
+  padding:2.5px 4px;text-align:left;border:0.5px solid #876040;
+}
+.act-table td{
+  padding:3px 4px;border:0.5px solid #c4a572;
+  vertical-align:top;color:#2a1505;line-height:1.35;
+}
+.act-table tr:nth-child(even) td{background:rgba(180,140,90,0.10);}
+.act-table .lbl{font-family:'Cinzel',serif;font-weight:600;font-size:8.5px;color:#5a2d0c;}
+.act-table .cost{text-align:center;font-style:italic;color:#6b3a10;font-size:9px;}
+.act-table .pts{text-align:center;font-size:9px;}
+
+/* ── SCORE TABLE ── */
+.score-table{width:100%;border-collapse:collapse;font-size:9px;}
+.score-table td{padding:2px 4px;border:0.5px solid #c4a572;color:#2a1505;line-height:1.3;}
+.score-table td:first-child{font-weight:600;color:#4a3050;font-family:'Cinzel',serif;font-size:8px;background:rgba(74,48,80,0.08);white-space:nowrap;width:26%;}
+.score-table tr:nth-child(even) td{background:rgba(180,140,90,0.07);}
+
+/* ── SETUP LIST ── */
+.setup-list{list-style:none;display:flex;flex-direction:column;gap:1.5px;}
+.setup-list li{font-size:9.5px;line-height:1.32;color:#2a1505;padding-left:10px;position:relative;}
+.setup-list li::before{content:'›';position:absolute;left:1px;color:#876040;font-size:10px;line-height:1.15;}
+.setup-list li b{font-weight:600;}
+
+/* ── ZONES ── */
+.zone-row{display:flex;gap:4px;align-items:flex-start;margin-bottom:2px;}
+.zone-badge{
+  font-family:'Cinzel',serif;font-size:7px;font-weight:600;letter-spacing:.3px;
+  padding:1.5px 5px;border-radius:2px;white-space:nowrap;flex-shrink:0;margin-top:1px;
+  width:52px;text-align:center;
+}
+.zb-castle{background:#5a2d0c;color:#f0e6d0;}
+.zb-wall{background:#2d5a2d;color:#f0e6d0;}
+.zb-well{background:#2d4a5a;color:#f0e6d0;}
+.zb-domain{background:#3a2d5a;color:#f0e6d0;}
+.zone-text{font-size:9.5px;line-height:1.35;color:#2a1505;}
+
+/* ── ASCENSO STEPS ── */
+.asc-steps{display:flex;flex-direction:column;gap:2px;margin:1px 0;}
+.asc-step{display:flex;gap:4px;align-items:flex-start;font-size:9.5px;line-height:1.35;color:#2a1505;}
+.asc-marker{
+  font-family:'Cinzel',serif;font-size:7px;font-weight:700;color:#5a2d0c;
+  flex-shrink:0;margin-top:1px;min-width:10px;
+}
+.asc-floor{
+  display:inline-block;font-family:'Cinzel',serif;font-size:7.5px;font-weight:600;
+  color:#f0e6d0;background:#5a2d0c;padding:1px 4px;border-radius:2px;
+  margin-right:2px;white-space:nowrap;
+}
+.asc-cost{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:9px;color:#6b3a10;font-style:italic;
+  padding:2px 0;
+}
+.asc-cost span{font-weight:600;}
+
+/* ── FOOTER ── */
+.footer{text-align:center;font-size:6.5px;color:#876040;font-style:italic;border-top:1px solid #c4a572;padding-top:2px;margin-top:auto;}
+
+.print-btn{display:block;margin:10px auto;padding:8px 24px;font-family:'EB Garamond',serif;font-size:13px;background:#f0e6d0;color:#3d2008;border:1px solid #876040;border-radius:4px;cursor:pointer;}
+.print-btn:hover{background:#e0d0b0;}
+@media print{.print-btn{display:none;}}
+
+/* ── DIE ICONS ── */
+.die{display:inline-block;width:9px;height:9px;border-radius:1.5px;vertical-align:middle;margin:0 1px;}
+.die-c{background:#e05030;}.die-b{background:#303030;}.die-w{background:#e0ddd0;border:0.5px solid #999;}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="header">
+    <div class="title-jp">姫 路 城</div>
+    <div class="title-en">The White Castle</div>
+    <div class="title-sub">Referencia rápida · 3 rondas · 3 turnos por jugador · Más Puntos de Clan (PC) gana</div>
+  </div>
+
+  <div class="body">
+
+    <!-- ============ LEFT ============ -->
+    <div class="col">
+
+      <!-- PREPARACIÓN -->
+      <div class="sec">
+        <div class="sec-head sh-setup">Preparación</div>
+        <div class="sec-body">
+          <ul class="setup-list">
+            <li><b>Tablero central</b> + marcador ronda 1 + reserva monedas, sellos, fichas +40/+80</li>
+            <li><b>Castillo:</b> Intendentes Piso 1 (3 cartas), Diplomáticos Piso 2 (2 cartas), Daimyo Piso 3 <span class="detail" style="display:inline;">— 2J: retirar cartas ◆</span></li>
+            <li><b>Losetas dado:</b> 1/color en ◆, resto numérico (sala ≥2 colores). Pozo boca abajo</li>
+            <li><b>Dados:</b> 3/4/5 por color (2/3/4J) → ascendente izq→der. <b>Sembrar</b> 1 Planta + 1 Piedra bajo puente. <b>Patios:</b> 4 losetas</li>
+            <li><b>Personal:</b> tablero + 5 cortesanos, 5 guerreros, 5 jardineros. Recursos en 0, abanico en pista de PC, influencia en Paso del Tiempo</li>
+            <li><b>Cartas iniciales:</b> jugadores+1 pares, orden inverso. Amarilla → tablero, naranja + recurso → <span class="k-lantern">linterna</span> <span class="detail" style="display:inline;">— Decreto también a linterna</span></li>
+          </ul>
+          <div class="warn">⚠ Si todas las cartas del castillo tienen la misma acción fondo oscuro → devolver, barajar, repetir.</div>
+        </div>
+      </div>
+
+      <!-- TURNO -->
+      <div class="sec">
+        <div class="sec-head sh-game">Tu turno — 4 pasos en orden</div>
+        <div class="sec-body">
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-body"><b>Tomar</b> 1 dado de extremo de puente.
+                <span class="detail">Hueco → dado adyacente se desplaza al extremo.</span></div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-body"><b>Colocar</b> dado en espacio con ícono de dado. Siempre cubre un valor previo.</div>
+            </div>
+          </div>
+
+          <div class="coin-compare">
+            <div class="coin-col"><b>Mayor</b> al cubierto → ganas diferencia en monedas</div>
+            <div class="coin-col"><b>Menor</b> al cubierto → pagas diferencia en monedas</div>
+            <div class="coin-note">(Igual = nada)</div>
+          </div>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-body"><span class="k-lantern">Linterna</span> — <b>solo si tomaste del extremo izquierdo.</b>
+                Activa todos los íconos visibles en tu zona linterna.</div>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <div class="step-body"><b>Ejecutar</b> acción(es) del espacio, en cualquier orden.</div>
+            </div>
+          </div>
+          <div class="warn">Apilar: solo tablero central, máx 1 encima. <b>En 1–2J nunca se apilan.</b></div>
+        </div>
+      </div>
+
+      <!-- ZONAS -->
+      <div class="sec">
+        <div class="sec-head sh-game">Zonas del tablero</div>
+        <div class="sec-body">
+          <div class="zone-row">
+            <span class="zone-badge zb-castle">Castillo</span>
+            <span class="zone-text">Color del dado activa loseta(s) → acción de carta. Piso 1: hasta 2 acciones si color aparece ×2.
+              <span class="detail">Sin loseta del color → no colocar ahí.</span></span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-badge zb-wall">Muros</span>
+            <span class="zone-text">2 espacios, cualquier color. Elegir 1 acción: Guerrero, Jardinero o Cortesano.</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-badge zb-well">Pozo</span>
+            <span class="zone-text">Valor siempre = 1, sin límite de dados. <span class="k-seal">1 Sello</span> + recompensas de 2 losetas.
+              <span class="detail">Dado >1 → ganas diferencia en monedas.</span></span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-badge zb-domain">Dominio</span>
+            <span class="zone-text"><span class="die die-c"></span> Coral → Cortesano &ensp;<span class="die die-b"></span> Negro → Jardinero &ensp;<span class="die die-w"></span> Blanco → Guerrero.
+              <br>Orden fijo: ① Recompensas visibles ② Acción de tu carta.
+              <span class="detail">No activar misma fila 2× en un turno.</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- REFERENCIA -->
+      <div class="sec">
+        <div class="sec-head sh-ref">Referencia clave</div>
+        <div class="sec-body">
+          <div class="r"><span class="k-lantern">Linterna</span> se activa al: tomar dado izq · cortesano a Piso 3 · ícono en cartas/losetas. Resuelve <b>todos</b> los íconos visibles.</div>
+          <div class="dv"></div>
+          <div class="r"><span class="k-seal">Sellos Daimyo</span> (máx 5): checkpoints en Paso del Tiempo · acciones fondo oscuro (Piso 1). <b>Cambio:</b> 2 → 1 recurso · 1 → 1 moneda.</div>
+          <div class="dv"></div>
+          <div class="r"><b>Recursos</b> (máx 7): Comida = jardinero · Hierro = guerrero · Nácar = ascenso. <span style="font-weight:600;">Negro = ganas</span> · <span style="color:#b03030;font-weight:600;">Rojo = pagas</span></div>
+          <div class="dv"></div>
+          <div class="r"><b>Paso del Tiempo:</b> avanza con influencia. Checkpoints: <span class="k-seal">1 / 2 / 3 Sellos</span>. No pagas → no avanzas. Define orden de turno al fin de ronda.</div>
+          <div class="dv"></div>
+          <div class="r"><span class="k-pc">PC:</span> abanicos <span style="color:#c03030;font-weight:600;">rojos</span> = inmediatos · <span style="color:#b8960a;font-weight:600;">dorados</span> = solo al final. Superar 40 → ficha +40 (voltear a +80).</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============ RIGHT ============ -->
+    <div class="col">
+
+      <!-- ACCIONES TABLA (sin Ascenso) -->
+      <div class="sec">
+        <div class="sec-head sh-game">Acciones principales</div>
+        <div class="sec-body">
+          <table class="act-table">
+            <thead>
+              <tr>
+                <th style="width:14%">Acción</th>
+                <th style="width:40%">Qué hacer</th>
+                <th style="width:16%">Costo</th>
+                <th style="width:30%">PC final</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="lbl">Guerrero</td>
+                <td>Tomar más a la izq → colocar en cualquier Patio → acción(es) de loseta(s)
+                  <span class="detail">Sin límite de clanes por patio.</span></td>
+                <td class="cost">Hierro según patio</td>
+                <td class="pts">Valor patio × cortesanos <i>dentro</i> del castillo</td>
+              </tr>
+              <tr>
+                <td class="lbl">Jardinero</td>
+                <td>Tomar más a la izq → colocar en jardín <b>sin jardinero de tu clan</b> → acción de carta</td>
+                <td class="cost">Comida según carta</td>
+                <td class="pts">Valor en carta</td>
+              </tr>
+              <tr>
+                <td class="lbl">Cortesano<br><small style="font-family:'EB Garamond';font-weight:400;font-style:italic;color:#6b3a10;">Audiencia</small></td>
+                <td>Tomar más a la izq → colocar en Puerta del Castillo</td>
+                <td class="cost">2 <span class="k-coin">monedas</span></td>
+                <td class="pts">Puerta = <b>1</b> c/u</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CORTESANO ASCENSO (bloque dedicado) -->
+      <div class="sec">
+        <div class="sec-head sh-ascenso">Cortesano — Ascenso</div>
+        <div class="sec-body">
+          <div class="r">Mover <b>1</b> cortesano tuyo ↑1 o ↑2 pisos (todo al mismo cortesano).</div>
+          <div class="asc-cost">
+            <span>↑1 piso: 2 nácar</span> &ensp;·&ensp; <span>↑2 pisos: 5 nácar</span>
+          </div>
+
+          <div style="margin-top:1px;">
+            <div class="r"><b><span class="asc-floor">Piso 1</span> <span class="asc-floor">Piso 2</span></b> — secuencia fija:</div>
+            <div class="asc-steps">
+              <div class="asc-step"><span class="asc-marker">①</span> Acción de carta de sala</div>
+              <div class="asc-step"><span class="asc-marker">②</span> <span class="k-lantern">Linterna</span> boca abajo</div>
+              <div class="asc-step"><span class="asc-marker">③</span> Tomar carta de sala → <span class="k-action">1 acción fondo claro</span> → reponer carta</div>
+            </div>
+            <div class="detail" style="padding-left:14px;">Sin carta para reponer: acción fondo claro igual, pero no tomas carta.</div>
+          </div>
+
+          <div style="margin-top:2px;">
+            <div class="r"><b><span class="asc-floor">Piso 3</span></b> — <span class="k-lantern">Linterna</span> + carta Daimyo.
+              <span class="detail">Sin espacio → cortesano queda en la sala.</span></div>
+          </div>
+
+          <div class="n" style="margin-top:2px;">Audiencia (A) y Ascenso (B) en cualquier orden, incluso con distintos cortesanos. B va completo a uno solo.</div>
+
+          <div style="margin-top:2px;">
+            <div class="r" style="font-size:9px;"><b>PC final:</b> Puerta = <span class="k-pc">1</span> &ensp; Piso 1 = <span class="k-pc">3</span> &ensp; Piso 2 = <span class="k-pc">6</span> &ensp; Piso 3 = <span class="k-pc">10</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FIN DE RONDA -->
+      <div class="sec">
+        <div class="sec-head sh-timing">Fin de ronda — quedan 3 dados en puentes</div>
+        <div class="sec-body">
+          <div class="steps">
+            <div class="step">
+              <div class="step-num" style="background:#2d5a5a;">1</div>
+              <div class="step-body"><b>Reordenar</b> turnos según Paso del Tiempo (más avanzado = primero).
+                <span class="detail">Empate: token más arriba en la pila.</span></div>
+            </div>
+            <div class="step">
+              <div class="step-num" style="background:#2d5a5a;">2</div>
+              <div class="step-body"><b>Activar jardines</b> (R1–R2; tras R3 → puntuación): puente con ≥1 dado → jardineros bajo él se activan.
+                <span class="detail">En orden de turno, cada jugador activa sus jardines 1 vez c/u.</span></div>
+            </div>
+            <div class="step">
+              <div class="step-num" style="background:#2d5a5a;">3</div>
+              <div class="step-body"><b>Preparar</b> siguiente (R1–R2): relanzar dados → ascendente izq→der. Avanzar marcador.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PUNTUACIÓN -->
+      <div class="sec">
+        <div class="sec-head sh-score">Puntuación final — tras ronda 3</div>
+        <div class="sec-body">
+          <table class="score-table">
+            <tr><td><span class="k-coin">Monedas</span>+<span class="k-seal">Sellos</span></td><td>Cada 5 (sumados, redondeo ↓) = <span class="k-pc">1 PC</span></td></tr>
+            <tr><td>Recursos</td><td>3–6 uds = <span class="k-pc">1</span> &ensp; 7 uds = <span class="k-pc">2 PC</span></td></tr>
+            <tr><td>Paso del Tiempo</td><td>Zona 2 = <span class="k-pc">3</span> &ensp; Zona 3 = <span class="k-pc">6</span> &ensp; Zona 4 = <span class="k-pc">10–15</span> según casilla</td></tr>
+            <tr><td>Cortesanos</td><td>Puerta = <span class="k-pc">1</span> &ensp; Piso 1 = <span class="k-pc">3</span> &ensp; Piso 2 = <span class="k-pc">6</span> &ensp; Piso 3 = <span class="k-pc">10</span></td></tr>
+            <tr><td>Guerreros</td><td>Valor patio × cortesanos <i>dentro</i> del castillo (no Puerta)</td></tr>
+            <tr><td>Jardineros</td><td>PC indicados en cada carta</td></tr>
+            <tr><td style="color:#b8960a;">Dorados</td><td>Sumar abanicos <span style="color:#b8960a;font-weight:600;">dorados</span> acumulados</td></tr>
+            <tr><td>Desempate</td><td>Mayor posición en orden de turno</td></tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    姫路城 · The White Castle · Sheila Santos & Israel Cendrero · Devir
+  </div>
+
+</div>
+
+<button class="print-btn" onclick="window.print()">Imprimir / Guardar como PDF</button>
+
+</body>
+</html>

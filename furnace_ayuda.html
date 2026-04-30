@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Furnace — Ayuda 4x A4</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #e8e6e0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  @page { size: A4 portrait; margin: 0; }
+
+  .sheet {
+    width: 210mm;
+    height: 297mm;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0;
+    background: #c8c5be;
+    page-break-after: always;
+  }
+
+  /* ── Individual card ── */
+  .card {
+    width: 105mm;
+    height: 148.5mm;
+    background: #fff;
+    padding: 4mm 4.5mm 3mm;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    overflow: hidden;
+  }
+
+  /* Header */
+  .hdr {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 3px;
+    border-bottom: 0.75px solid #c8c5be;
+    flex-shrink: 0;
+  }
+  .ttl { font-size: 13px; font-weight: 500; letter-spacing: .2px; color: #1a1a1a; }
+  .sub { font-size: 8px; color: #6b6a66; }
+
+  /* Section */
+  .sec {
+    border: 0.5px solid #d0cec8;
+    border-radius: 5px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .sh {
+    padding: 2px 7px;
+    font-size: 7px;
+    font-weight: 500;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    background: #f5f4f0;
+    color: #6b6a66;
+    border-bottom: 0.5px solid #d0cec8;
+  }
+  .sb {
+    padding: 4px 7px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  /* Text */
+  .r  { font-size: 7.5px; line-height: 1.45; color: #1a1a1a; }
+  .r b { font-weight: 500; }
+  .n  { font-size: 7px; color: #6b6a66; line-height: 1.45; }
+  .pl { font-size: 7px; font-weight: 500; letter-spacing: .5px; text-transform: uppercase; color: #6b6a66; margin-bottom: 1px; }
+  .dv { height: 0.5px; background: #d0cec8; margin: 1px 0; }
+
+  /* Flow */
+  .fl { display: flex; align-items: center; gap: 3px; flex-wrap: wrap; }
+  .fs { font-size: 7px; padding: 2px 5px; border: 0.5px solid #b4b2a9; border-radius: 4px; color: #1a1a1a; background: #fff; line-height: 1.3; }
+  .fa { font-size: 8px; color: #b4b2a9; }
+
+  /* Icon row */
+  .ir { display: flex; gap: 5px; align-items: flex-start; }
+  .ir .r { flex: 1; padding-top: 0px; }
+
+  /* Two col */
+  .tc { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .cl { font-size: 7px; color: #6b6a66; margin-bottom: 1px; }
+
+  /* Legend */
+  .leg {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    padding: 3px 7px 4px;
+    background: #f5f4f0;
+    border-top: 0.5px solid #d0cec8;
+  }
+  .li { display: flex; align-items: center; gap: 3px; font-size: 7px; color: #444441; }
+
+  /* Chips */
+  .ch { display: inline-flex; align-items: center; gap: 2px; font-size: 7px; font-weight: 500; padding: 1px 5px; border-radius: 10px; white-space: nowrap; }
+  .ca { background: #FAEEDA; color: #633806; }
+  .cb { background: #E6F1FB; color: #0C447C; }
+  .cg { background: #E1F5EE; color: #085041; }
+
+  /* Footnote */
+  .fn { font-size: 6.5px; color: #888780; line-height: 1.5; text-align: center; padding-top: 2px; flex-shrink: 0; }
+
+  /* Inline icon sizing helper */
+  .ic { vertical-align: middle; margin: 0 1px; }
+
+  /* Print button */
+  .pbtn {
+    display: block; margin: 12px auto; padding: 8px 24px;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+    background: #fff; color: #1a1a1a; border: 0.5px solid #b4b2a9;
+    border-radius: 8px; cursor: pointer;
+  }
+  @media print { .pbtn { display: none; } body { background: #c8c5be; } }
+</style>
+</head>
+<body>
+
+<!-- SVG ICON DEFS (referenced via use) -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- coin -->
+    <g id="ico-coin">
+      <circle cx="9" cy="9" r="8" fill="#FAEEDA" stroke="#BA7517" stroke-width="1"/>
+      <circle cx="9" cy="9" r="5" fill="none" stroke="#BA7517" stroke-width="1"/>
+    </g>
+    <!-- cube resource -->
+    <g id="ico-res">
+      <rect x="2" y="5" width="10" height="10" rx="1.5" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+      <polygon points="2,5 5.5,2 15.5,2 15.5,12 12,15 12,5" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
+      <line x1="12" y1="5" x2="2" y2="5" stroke="#0F6E56" stroke-width="1"/>
+    </g>
+    <!-- coal -->
+    <g id="ico-coal">
+      <rect x="3" y="3" width="12" height="12" rx="2" fill="#444441" stroke="#2C2C2A" stroke-width="1"/>
+    </g>
+    <!-- iron -->
+    <g id="ico-iron">
+      <rect x="2" y="5" width="14" height="8" rx="2" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+    </g>
+    <!-- oil -->
+    <g id="ico-oil">
+      <ellipse cx="9" cy="11" rx="5" ry="6" fill="#C0DD97" stroke="#3B6D11" stroke-width="1"/>
+      <ellipse cx="9" cy="5" rx="3" ry="2" fill="#C0DD97" stroke="#3B6D11" stroke-width="1"/>
+    </g>
+    <!-- extraction arrow -->
+    <g id="ico-ext">
+      <rect x="2" y="11" width="14" height="5" rx="1.5" fill="#FAEEDA" stroke="#BA7517" stroke-width="1"/>
+      <line x1="9" y1="2" x2="9" y2="10" stroke="#BA7517" stroke-width="1.5"/>
+      <polygon points="5.5,8 9,12 12.5,8" fill="#BA7517"/>
+    </g>
+    <!-- processing arrows -->
+    <g id="ico-proc">
+      <path d="M4 6 Q9 1 14 6" fill="none" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/>
+      <polygon points="14,3 14,7 11,5" fill="#185FA5"/>
+      <path d="M14 12 Q9 17 4 12" fill="none" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/>
+      <polygon points="4,15 4,11 7,13" fill="#185FA5"/>
+    </g>
+    <!-- disc -->
+    <g id="ico-disc">
+      <circle cx="9" cy="9" r="8" fill="#CECBF6" stroke="#534AB7" stroke-width="1"/>
+      <text x="9" y="13" text-anchor="middle" font-size="8" font-family="DM Sans,sans-serif" font-weight="500" fill="#26215C">$</text>
+    </g>
+    <!-- card -->
+    <g id="ico-card">
+      <rect x="2" y="2" width="14" height="14" rx="2" fill="#E6F1FB" stroke="#185FA5" stroke-width="1"/>
+      <line x1="5" y1="6" x2="13" y2="6" stroke="#185FA5" stroke-width="1"/>
+      <line x1="5" y1="9" x2="13" y2="9" stroke="#185FA5" stroke-width="1"/>
+      <line x1="5" y1="12" x2="10" y2="12" stroke="#185FA5" stroke-width="1"/>
+    </g>
+    <!-- first player star -->
+    <g id="ico-star">
+      <polygon points="9,2 11,7 17,7 12,11 14,17 9,13 4,17 6,11 1,7 7,7" fill="#F5C4B3" stroke="#993C1D" stroke-width="1"/>
+    </g>
+    <!-- upgrade gear -->
+    <g id="ico-upg">
+      <circle cx="9" cy="9" r="4" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+      <circle cx="9" cy="9" r="2" fill="#0F6E56"/>
+      <rect x="8" y="1" width="2" height="4" rx="1" fill="#0F6E56"/>
+      <rect x="8" y="13" width="2" height="4" rx="1" fill="#0F6E56"/>
+      <rect x="1" y="8" width="4" height="2" rx="1" fill="#0F6E56"/>
+      <rect x="13" y="8" width="4" height="2" rx="1" fill="#0F6E56"/>
+    </g>
+    <!-- agent die -->
+    <g id="ico-die">
+      <rect x="2" y="2" width="14" height="14" rx="3" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+      <circle cx="6" cy="6" r="1.5" fill="#5F5E5A"/>
+      <circle cx="12" cy="6" r="1.5" fill="#5F5E5A"/>
+      <circle cx="9" cy="9" r="1.5" fill="#5F5E5A"/>
+      <circle cx="6" cy="12" r="1.5" fill="#5F5E5A"/>
+      <circle cx="12" cy="12" r="1.5" fill="#5F5E5A"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- ── MACRO: single card HTML as a JS template ── -->
+<script>
+function ico(id, size) {
+  size = size || 13;
+  return `<svg width="${size}" height="${size}" viewBox="0 0 18 18" class="ic"><use href="#ico-${id}"/></svg>`;
+}
+function card() {
+  return `
+  <div class="card">
+
+    <div class="hdr">
+      <span class="ttl">Furnace</span>
+      <span class="sub">4 rondas · Subasta → Producción</span>
+    </div>
+
+    <!-- LEYENDA -->
+    <div class="sec">
+      <div class="sh">Leyenda</div>
+      <div class="leg">
+        <div class="li">${ico('ext',12)} Extracción <em style="font-style:italic;color:#888">(oblig.)</em></div>
+        <div class="li">${ico('proc',12)} Procesamiento <em style="font-style:italic;color:#888">(opc.)</em></div>
+        <div class="li">${ico('coal',12)} Carbón</div>
+        <div class="li">${ico('iron',12)} Hierro</div>
+        <div class="li">${ico('oil',12)} Petróleo</div>
+        <div class="li">${ico('coin',12)} Dinero</div>
+        <div class="li">${ico('disc',12)} Disco capital</div>
+        <div class="li">${ico('card',12)} Carta empresa</div>
+        <div class="li">${ico('upg',12)} Mejora</div>
+        <div class="li">${ico('star',12)} 1er jugador</div>
+      </div>
+    </div>
+
+    <!-- PREPARACIÓN -->
+    <div class="sec">
+      <div class="sh">Preparación</div>
+      <div class="sb">
+        <div class="r">Cada jugador recibe: carta de inicio${ico('card')} (toma recursos${ico('res')} <b>solo una vez</b>), carta capitalista, y discos${ico('disc')} de su color.</div>
+        <div class="tc">
+          <div>
+            <div class="cl">Cartas en subasta</div>
+            <div class="r"><b>2J</b>→6 &nbsp;<b>3J</b>→7 &nbsp;<b>4J</b>→8</div>
+          </div>
+          <div>
+            <div class="cl">Desempate final</div>
+            <div class="r">Más cartas${ico('card')} → más recursos${ico('res')}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBASTA -->
+    <div class="sec">
+      <div class="sh">Fase 1 — Subasta</div>
+      <div class="sb">
+        <div class="pl">Pujas</div>
+        <div class="fl">
+          <div class="fs">Cada jugador coloca 1 disco${ico('disc',10)} en orden</div>
+          <span class="fa">→</span>
+          <div class="fs">Repetir hasta agotar</div>
+        </div>
+        <div class="n">Restricciones: no 2 discos del mismo jugador en una carta; no 2 discos del mismo valor en una carta.</div>
+        <div class="dv"></div>
+        <div class="pl">Resolución — izquierda a derecha</div>
+        <div class="ir">
+          <svg width="14" height="14" viewBox="0 0 18 18" class="ic" style="flex-shrink:0;margin-top:1px"><rect x="1" y="1" width="16" height="16" rx="3" fill="#E6F1FB" stroke="#185FA5" stroke-width="1"/><polygon points="9,4 12,9 6,9" fill="#185FA5"/><rect x="7.5" y="9" width="3" height="5" rx="1" fill="#185FA5"/></svg>
+          <span class="r"><b>Puja más alta</b> → gana carta${ico('card')} (lado básico arriba). Activa en Producción.</span>
+        </div>
+        <div class="ir">
+          <svg width="14" height="14" viewBox="0 0 18 18" class="ic" style="flex-shrink:0;margin-top:1px"><rect x="1" y="1" width="16" height="16" rx="3" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/><polygon points="9,14 12,9 6,9" fill="#5F5E5A"/><rect x="7.5" y="4" width="3" height="5" rx="1" fill="#5F5E5A"/></svg>
+          <span class="r"><b>Pujas más bajas</b> → compensación del tope de la carta:<br>
+          ${ico('ext')} Extracción: recursos × valor del disco${ico('disc')}<br>
+          ${ico('proc')} Procesamiento: hasta valor del disco${ico('disc')} veces. Opcional.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCCIÓN -->
+    <div class="sec">
+      <div class="sh">Fase 2 — Producción</div>
+      <div class="sb">
+        <div class="ir">${ico('ext',14)}<span class="r"><b>Extracción</b> — ganar recursos${ico('res')} indicados. <b>Obligatoria.</b></span></div>
+        <div class="ir">${ico('proc',14)}<span class="r"><b>Procesamiento</b> — convertir recursos dentro del límite. <b>Opcional.</b></span></div>
+        <div class="dv"></div>
+        <div class="r">Simultáneo. Cada carta${ico('card')} activa una vez. Orden libre, pero sin volver a cartas anteriores.</div>
+        <div class="ir">${ico('upg',14)}<span class="r"><b>Mejora:</b> carta de inicio otorga token${ico('upg')}. Voltear carta = 1 Carbón${ico('coal')} + 1 token${ico('upg')}. Cartas mejoradas: efectos de arriba a abajo.</span></div>
+      </div>
+    </div>
+
+    <!-- FIN DE RONDA -->
+    <div class="sec">
+      <div class="sh">Fin de ronda</div>
+      <div class="sb">
+        <div class="fl">
+          <div class="fs">Descartar cartas${ico('card',10)} sin usar</div>
+          <span class="fa">→</span>
+          <div class="fs">Pasar token${ico('star',10)} a la izq.</div>
+          <span class="fa">→</span>
+          <div class="fs">Avanzar contador</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIN DE JUEGO + 2J -->
+    <div class="sec">
+      <div class="sh">Fin del juego (ronda 4) &amp; 2 jugadores</div>
+      <div class="sb">
+        <div class="r"><b>Más dinero${ico('coin')} gana.</b> Desempate: más cartas${ico('card')} → más recursos${ico('res')}.</div>
+        <div class="dv"></div>
+        <div class="ir">${ico('die',14)}<span class="n"><b>2J — Agente:</b> tira dado después de cada 2ª puja. El número indica la carta donde el Agente coloca su disco más bajo posible. Al final, sus cartas se descartan (pero los jugadores cobran compensación primero).</span></div>
+      </div>
+    </div>
+
+    <div class="fn">Carta de inicio: recursos solo en preparación · Empresa: básico arriba · No compensación al ganador</div>
+
+  </div>`;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const sheet = document.getElementById('sheet');
+  sheet.innerHTML = card() + card() + card() + card();
+});
+</script>
+
+<div class="sheet" id="sheet"></div>
+
+<button class="pbtn" onclick="window.print()">Imprimir / Guardar como PDF</button>
+
+</body>
+</html>

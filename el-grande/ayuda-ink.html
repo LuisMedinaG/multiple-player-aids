@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>El Grande — Ayuda de Jugador</title>
+<title>El Grande — Ayuda de Jugador (Ink Saving)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
@@ -27,10 +27,7 @@ body {
   position: relative;
   font-family: 'Noto Serif', Georgia, serif;
   color: var(--ink);
-  background: var(--bg);
-  background-image:
-    radial-gradient(ellipse at 12% 8%,  rgba(155,34,38,0.05)  0%, transparent 50%),
-    radial-gradient(ellipse at 88% 92%, rgba(138,104,32,0.06) 0%, transparent 50%);
+  background: white;
   print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
 }
@@ -82,7 +79,7 @@ body {
 .steps { display: flex; flex-direction: column; gap: 0.05cm; }
 .step  { display: flex; align-items: flex-start; gap: 0.3em; font-size: 7pt; line-height: 1.33; }
 .num {
-  background: var(--crimson); color: #faf0dc;
+  background: white; color: var(--crimson); border: 1px solid var(--crimson);
   border-radius: 50%;
   width: 1.5em; height: 1.5em; min-width: 1.5em;
   display: flex; align-items: center; justify-content: center;
@@ -90,9 +87,9 @@ body {
   line-height: 1; flex-shrink: 0;
   print-color-adjust: exact; -webkit-print-color-adjust: exact;
 }
-.num-g { background: var(--green); }
-.num-d { background: var(--dark); }
-.num-o { background: var(--gold); }
+.num-g { background: white; color: var(--green); border-color: var(--green); }
+.num-d { background: white; color: var(--dark); border-color: var(--dark); }
+.num-o { background: white; color: var(--gold); border-color: var(--gold); }
 .sb { flex: 1; }
 strong { font-weight: 700; }
 em { color: var(--dim); font-style: italic; }
@@ -121,20 +118,20 @@ em { color: var(--dim); font-style: italic; }
   font-family: 'Cinzel', serif;
   font-size: 7pt; font-weight: 700;
   letter-spacing: 0.07em; text-transform: uppercase;
-  color: #faf0dc;
+  color: var(--ink);
   padding: 0.07cm 0.22cm;
   display: flex; align-items: center; gap: 0.28em;
   print-color-adjust: exact; -webkit-print-color-adjust: exact;
 }
-.bh-dark { background: var(--dark); }
-.bh-gold { background: var(--gold); }
+.bh-dark { background: white; border-bottom: 1.5px solid var(--dark); }
+.bh-gold { background: white; border-bottom: 1.5px solid var(--gold); }
 .box-body { padding: 0.09cm 0.18cm; display: flex; flex-direction: column; gap: 0.05cm; }
 
 /* ── Warning callout ── */
 .warn {
   border: 1.5px solid var(--crimson);
   border-radius: 0.14cm;
-  background: rgba(155,34,38,0.05);
+  background: white;
   padding: 0.08cm 0.2cm;
   font-size: 7pt; line-height: 1.33;
   display: flex; align-items: flex-start; gap: 0.3em;
@@ -180,7 +177,7 @@ em { color: var(--dim); font-style: italic; }
 .power-strip {
   display: flex; align-items: center; gap: 0.22cm;
   border: 1.5px solid var(--gold); border-radius: 0.14cm;
-  background: rgba(138,104,32,0.06);
+  background: white;
   padding: 0.07cm 0.22cm;
   flex-shrink: 0;
   print-color-adjust: exact; -webkit-print-color-adjust: exact;
@@ -338,7 +335,7 @@ em { color: var(--dim); font-style: italic; }
 
       <div class="box">
         <div class="box-head bh-gold">
-          <svg class="ic" width="11" height="11" style="color:#faf0dc"><use href="#ic-star"/></svg>
+          <svg class="ic" width="11" height="11" style="color:var(--gold)"><use href="#ic-star"/></svg>
           Puntuación General — Rondas 3, 6 y 9
         </div>
         <div class="box-body">

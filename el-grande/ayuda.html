@@ -80,7 +80,7 @@ body {
 
 /* ── Steps ── */
 .steps { display: flex; flex-direction: column; gap: 0.05cm; }
-.step  { display: flex; align-items: flex-start; gap: 0.3em; font-size: 7pt; line-height: 1.33; }
+.step  { display: flex; align-items: flex-start; gap: 0.3em; font-size: 7pt; line-height: 1.33; text-align: left; }
 .num {
   background: var(--crimson); color: #faf0dc;
   border-radius: 50%;
@@ -100,7 +100,10 @@ em { color: var(--dim); font-style: italic; }
 
 /* ── Sub-steps ── */
 .subs { margin: 0.04cm 0 0 1.55em; display: flex; flex-direction: column; gap: 0.04cm; }
-.sub  { display: flex; gap: 0.3em; align-items: flex-start; font-size: 6.5pt; line-height: 1.32; }
+.sub  { display: block; padding-left: 0.85em; text-indent: -0.85em; font-size: 6.5pt; line-height: 1.32; text-align: left; }
+.sub::before { content: "· "; color: var(--dim); }
+.sub:has(.sl)::before { content: none; }
+.sub:has(.sl) { padding-left: 0; text-indent: 0; }
 .sl   {
   font-family: 'Cinzel', serif; font-weight: 700; color: var(--crimson);
   font-size: 6pt; min-width: 0.85em; flex-shrink: 0;
@@ -163,7 +166,7 @@ em { color: var(--dim); font-style: italic; }
 
 /* ── Pill labels ── */
 .p {
-  display: inline-flex; align-items: center; gap: 0.12em;
+  display: inline-flex; align-items: center; gap: 0.12em; vertical-align: middle; text-indent: 0;
   padding: 0 0.18em; border-radius: 0.1em;
   font-weight: 700; white-space: nowrap; font-size: 0.95em;
 }
@@ -174,7 +177,8 @@ em { color: var(--dim); font-style: italic; }
 .p-pts  { background: rgba(138,104,32,0.12); color: var(--gold); }
 
 /* ── Inline icon ── */
-.ic { height: 1em; width: auto; vertical-align: middle; margin: 0 0.04em; display: inline; }
+.ic { height: 1.6em; width: auto; vertical-align: middle; margin: 0 0.05em; display: inline; }
+.p .ic { height: 1.05em; margin: 0; }
 
 /* ── Power card strip ── */
 .power-strip {
@@ -279,10 +283,10 @@ em { color: var(--dim); font-style: italic; }
         <div class="sec">Preparación</div>
         <div class="steps">
           <div class="step"><span class="num num-d">1</span><span class="sb">Colocar el <strong>Contador de Ronda</strong> <img src="./icons/round-marker.png" class="ic" alt="marcador"> en casilla 1 y el <span class="p p-cas"><img src="./icons/castillo.png" class="ic" alt="castillo"> Castillo</span> en su espacio.</span></div>
-          <div class="step"><span class="num num-d">2</span><span class="sb">Retirar Cartas de Acción marcadas con <svg class="ic" width="9" height="9"><use href="#ic-candle"/></svg>. Separar las <em>restantes</em> por <strong>número de caballeros</strong> en el reverso. Barajar cada mazo por separado, boca abajo.</span></div>
-          <div class="step"><span class="num num-d">3</span><span class="sb">Cada jugador elige color: toma sus <strong>13 Cartas de Poder</strong> <img src="./icons/power-cards.png" class="ic" alt="cartas de poder"> + 1 <strong>disco secreto</strong> <img src="./icons/secret-disc.png" class="ic" alt="disco secreto">.</span></div>
-          <div class="step"><span class="num num-d">4</span><span class="sb">Barajar las <strong>9 Cartas de Región</strong> <img src="./icons/region-cards.png" class="ic" alt="cartas de región">. La 1.ª → <span class="p p-king"><img src="./icons/king.png" class="ic" alt="rey"> Región del Rey</span>. Cada jugador roba 1 → coloca su <strong>Grande</strong> <img src="./icons/el-grande.png" class="ic" alt="grande"> + 2 caballeros <svg class="ic" width="10" height="10" style="color:#6b3a10"><use href="#ic-knight"/></svg> en esa región. Devolver el resto.</span></div>
-          <div class="step"><span class="num num-d">5</span><span class="sb"><strong>7 caballeros</strong> <svg class="ic" width="10" height="10" style="color:#6b3a10"><use href="#ic-knight"/></svg> de cada jugador a su <span class="p p-crt"><svg class="ic" width="9" height="9"><use href="#ic-court"/></svg> Corte</span>. Los 21 restantes → <span class="p p-prv"><svg class="ic" width="9" height="9"><use href="#ic-province"/></svg> Provincia</span>.</span></div>
+          <div class="step"><span class="num num-d">2</span><span class="sb">Cartas de Acción: retirar las marcadas con <img src="./icons/remove-card-icon.png" class="ic" alt="retirar">.<div class="subs"><div class="sub">Separar las <em>restantes</em> por <strong>número de caballeros</strong> en el reverso.</div><div class="sub">Barajar cada mazo por separado, boca abajo.</div></div></span></div>
+          <div class="step"><span class="num num-d">3</span><span class="sb">Cada jugador: toma sus <strong>13 Cartas de Poder</strong> <img src="./icons/power-cards.png" class="ic" alt="cartas de poder"> + 1 <strong>disco secreto</strong> <img src="./icons/secret-disc.png" class="ic" alt="disco secreto">.</span></div>
+          <div class="step"><span class="num num-d">4</span><span class="sb">Barajar las <strong>9 Cartas de Región</strong> <img src="./icons/region-cards.png" class="ic" alt="cartas de región">.<div class="subs"><div class="sub">La 1.ª → <span class="p p-king"><img src="./icons/king.png" class="ic" alt="rey"> Región del Rey</span>.</div><div class="sub">Cada jugador roba 1 → coloca su <strong>Grande</strong> <img src="./icons/el-grande.png" class="ic" alt="grande"> + 2 caballeros <svg class="ic" width="10" height="10" style="color:#6b3a10"><use href="#ic-knight"/></svg> en esa región. Devolver el resto.</div></div></span></div>
+          <div class="step"><span class="num num-d">5</span><span class="sb"><strong>7 caballeros</strong> <svg class="ic" width="10" height="10" style="color:#6b3a10"><use href="#ic-knight"/></svg> c/u a su <span class="p p-crt"><img src="./icons/court.png" class="ic" alt="corte"> Corte</span>. Los 21 restantes → <span class="p p-prv"><img src="./icons/province.png" class="ic" alt="provincia"> Provincia</span>.</span></div>
         </div>
       </div>
 
@@ -292,7 +296,7 @@ em { color: var(--dim); font-style: italic; }
           <div class="step"><span class="num">1</span><span class="sb"><strong class="vb">Revelar</strong> Cartas de Acción: voltear la superior de cada uno de los 5 mazos.</span></div>
           <div class="step"><span class="num">2</span><span class="sb"><strong class="vb">Jugar</strong> Cartas de Poder <img src="./icons/power-cards.png" class="ic" alt="cartas de poder">: desde el jugador inicial, en sentido horario, 1 carta boca arriba. <em>El valor debe ser único — nadie repite un valor ya jugado esta ronda.</em></span></div>
           <div class="step"><span class="num">3</span><span class="sb"><strong class="vb">Turnos</strong> de mayor a menor valor de carta. Cada jugador ejecuta su turno completo.</span></div>
-          <div class="step"><span class="num">4</span><span class="sb"><strong class="vb">Fin de ronda:</strong> descartar Cartas de Acción sobrantes — <em>"Su Majestad" vuelve boca abajo al mazo 5</em>. El valor <strong>más bajo</strong> otorga la ficha de jugador inicial. Descartar Cartas de Poder boca abajo. Avanzar marcador.</span></div>
+          <div class="step"><span class="num">4</span><span class="sb"><strong class="vb">Fin de ronda:</strong><div class="subs"><div class="sub">Descartar Cartas de Acción sobrantes <em>("Su Majestad" vuelve boca abajo al mazo 5)</em>.</div><div class="sub">Valor <strong>más bajo</strong> → ficha de jugador inicial.</div><div class="sub">Descartar Cartas de Poder <img src="./icons/power-cards.png" class="ic" alt=""> boca abajo. Avanzar marcador.</div></div></span></div>
         </div>
         <div class="rule-note">Tras rondas 3, 6 y 9 → Puntuación General antes de continuar.</div>
       </div>
@@ -302,14 +306,14 @@ em { color: var(--dim); font-style: italic; }
         <div class="steps">
           <div class="step">
             <span class="num num-g">A</span>
-            <span class="sb"><strong class="vb">Traer</strong> caballeros <svg class="ic" width="10" height="10" style="color:#6b3a10"><use href="#ic-knight"/></svg> a la <span class="p p-crt"><svg class="ic" width="9" height="9"><use href="#ic-court"/></svg> Corte</span>: toma de la <span class="p p-prv"><svg class="ic" width="9" height="9"><use href="#ic-province"/></svg> Provincia</span> hasta el número de tu Carta de Poder. <em>Sin caballeros en Provincia → tómalos de regiones (nunca del Castillo).</em></span>
+            <span class="sb"><strong class="vb">Traer</strong> caballeros <svg class="ic" width="10" height="10" style="color:#6b3a10"><use href="#ic-knight"/></svg> a la <span class="p p-crt"><img src="./icons/court.png" class="ic" alt="corte"> Corte</span>: toma de la <span class="p p-prv"><img src="./icons/province.png" class="ic" alt="provincia"> Provincia</span> hasta el número de tu Carta de Poder.<div class="subs"><div class="sub"><em>Sin caballeros en Provincia → tómalos de regiones (nunca del Castillo).</em></div></div></span>
           </div>
           <div class="step">
             <span class="num num-g">B</span>
             <span class="sb"><strong class="vb">Usar</strong> 1 Carta de Acción revelada. Ejecuta sus 2 acciones en <strong>cualquier orden</strong> (completa una antes de empezar la otra):
               <div class="subs">
-                <div class="sub"><span class="sl">①</span><span><strong>Colocar caballeros</strong> <svg class="ic" width="9" height="9" style="color:#6b3a10"><use href="#ic-knight"/></svg> (hasta nº de la carta). Solo desde la <span class="p p-crt"><svg class="ic" width="8" height="8"><use href="#ic-court"/></svg> Corte</span>. Solo en regiones <strong>vecinas</strong> de la <span class="p p-king"><img src="./icons/king.png" class="ic" alt="rey"> Región del Rey</span> o al <span class="p p-cas"><img src="./icons/castillo.png" class="ic" alt="castillo"> Castillo</span>.</span></div>
-                <div class="sub"><span class="sl">②</span><span><strong>Acción especial</strong> <em>(opcional)</em>. Si la ejecutas, complétala lo más posible aunque beneficie a otros.</span></div>
+                <div class="sub"><span class="sl">① </span><span><strong>Colocar caballeros</strong> <svg class="ic" width="9" height="9" style="color:#6b3a10"><use href="#ic-knight"/></svg> (hasta nº de la carta). Solo desde la <span class="p p-crt"><img src="./icons/court.png" class="ic" alt="corte"> Corte</span>. Solo en regiones <strong>vecinas</strong> de la <span class="p p-king"><img src="./icons/king.png" class="ic" alt="rey"> Región del Rey</span> o al <span class="p p-cas"><img src="./icons/castillo.png" class="ic" alt="castillo"> Castillo</span>.</span></div>
+                <div class="sub"><span class="sl">② </span><span><strong>Acción especial</strong> <em>(opcional)</em>. Si la ejecutas, complétala lo más posible aunque beneficie a otros.</span></div>
               </div>
             </span>
           </div>
@@ -343,7 +347,7 @@ em { color: var(--dim); font-style: italic; }
         </div>
         <div class="box-body">
           <div class="steps">
-            <div class="step"><span class="num num-o">a</span><span class="sb"><strong>Disco secreto</strong> <img src="./icons/secret-disc.png" class="ic" alt="disco">: todos eligen simultáneamente <strong>1 sola región</strong> para los caballeros del <span class="p p-cas"><img src="./icons/castillo.png" class="ic" alt="castillo"> Castillo</span>. Sin dividir. Si eliges la <span class="p p-king"><img src="./icons/king.png" class="ic" alt="rey"> Región del Rey</span> o el disco no queda claro → regresan a <span class="p p-crt"><svg class="ic" width="8" height="8"><use href="#ic-court"/></svg> Corte</span>.</span></div>
+            <div class="step"><span class="num num-o">a</span><span class="sb"><strong>Disco secreto</strong> <img src="./icons/secret-disc.png" class="ic" alt="disco">: todos eligen simultáneamente <strong>1 sola región</strong> para los caballeros del <span class="p p-cas"><img src="./icons/castillo.png" class="ic" alt="castillo"> Castillo</span>. Sin dividir.<div class="subs"><div class="sub"><em>Si eliges la <span class="p p-king"><img src="./icons/king.png" class="ic" alt="rey"> Región del Rey</span> o el disco no queda claro → regresan a <span class="p p-crt"><img src="./icons/court.png" class="ic" alt="corte"> Corte</span>.</em></div></div></span></div>
             <div class="step"><span class="num num-o">b</span><span class="sb"><strong class="vb">Puntuar</strong> <span class="p p-cas"><img src="./icons/castillo.png" class="ic" alt="castillo"> Castillo</span>: abrir puerta, separar por color, mayoría <strong>5 / 3 / 1</strong>. Revelar discos → mover caballeros a las regiones elegidas.</span></div>
             <div class="step"><span class="num num-o">c</span><span class="sb"><strong class="vb">Puntuar</strong> regiones en el orden del resumen del tablero (arriba → abajo). 1.°, 2.° y 3.° según mayoría y tabla de puntuación de cada región.</span></div>
           </div>
@@ -370,8 +374,8 @@ em { color: var(--dim); font-style: italic; }
         <div class="sec">Acciones especiales — Mover caballeros</div>
         <ul class="bl">
           <li>Pueden ir a <strong>cualquier región</strong> (no solo vecinas del Rey). También al <span class="p p-cas"><img src="./icons/castillo.png" class="ic" alt="castillo"> Castillo</span> si la carta no especifica "a una región".</li>
-          <li><strong>Nunca</strong> desde el Castillo · desde/hacia la <span class="p p-king"><img src="./icons/king.png" class="ic" alt="rey"> Región del Rey</span> · desde la <span class="p p-crt"><svg class="ic" width="8" height="8"><use href="#ic-court"/></svg> Corte</span>.</li>
-          <li><strong>Devolver a <span class="p p-prv"><svg class="ic" width="8" height="8"><use href="#ic-province"/></svg> Provincia</span>:</strong> cartas como <em>Retirada</em> y <em>Guerra Civil</em>.</li>
+          <li><strong>Nunca</strong> desde el Castillo · desde/hacia la <span class="p p-king"><img src="./icons/king.png" class="ic" alt="rey"> Región del Rey</span> · desde la <span class="p p-crt"><img src="./icons/court.png" class="ic" alt="corte"> Corte</span>.</li>
+          <li><strong>Devolver a <span class="p p-prv"><img src="./icons/province.png" class="ic" alt="provincia"> Provincia</span>:</strong> cartas como <em>Retirada</em> y <em>Guerra Civil</em>.</li>
         </ul>
       </div>
 
